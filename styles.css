@@ -82,11 +82,11 @@ body {
 }
 
 .hero-container {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
     display: flex;
     align-items: center;
-    gap: 4rem;
+    justify-content: space-between;
     padding: 0 2rem;
 }
 
@@ -105,6 +105,7 @@ body {
 
 .hero-content {
     text-align: left;
+    flex-basis: 60%;
 }
 
 .hero-title {
