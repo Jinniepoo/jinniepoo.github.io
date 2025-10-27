@@ -39,12 +39,11 @@ body {
 
 .nav-container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     height: 70px;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem; /* 좌우 여백 추가 */
+    padding: 0 2rem; 
 }
 
 .nav-logo a {
@@ -58,6 +57,7 @@ body {
     display: flex;
     list-style: none;
     gap: 2rem;
+    margin-left: auto; 
 }
 
 .nav-link {
@@ -82,20 +82,20 @@ body {
 }
 
 .hero-container {
-    max-width: 1000px; /* 너비 확장 */
+    max-width: 1000px;
     margin: 0 auto;
-    display: flex; /* Flexbox 적용 */
-    align-items: center; /* 수직 중앙 정렬 */
-    gap: 4rem; /* 이미지와 텍스트 사이 간격 */
+    display: flex;
+    align-items: center;
+    gap: 4rem;
     padding: 0 2rem;
 }
 
 .hero-image {
-    flex-shrink: 0; /* 이미지 크기 고정 */
+    flex-shrink: 0;
 }
 
 .profile-picture {
-    width: 220px; /* 이미지 크기 살짝 키움 */
+    width: 220px;
     height: 220px;
     object-fit: cover;
     border-radius: 50%; 
@@ -104,7 +104,7 @@ body {
 }
 
 .hero-content {
-    text-align: left; /* 텍스트 왼쪽 정렬 */
+    text-align: left;
 }
 
 .hero-title {
@@ -134,7 +134,7 @@ body {
 .hero-buttons {
     display: flex;
     gap: 1rem;
-    justify-content: flex-start; /* 버튼 왼쪽 정렬 */
+    justify-content: flex-start;
 }
 
 .btn {
@@ -535,6 +535,7 @@ section:nth-child(even) {
         box-shadow: 0 10px 27px rgba(0, 0, 0, 0.2);
         padding: 2rem 0;
         gap: 2.5rem;
+        margin-left: 0; 
     }
 
     .nav-menu.active {
@@ -542,21 +543,32 @@ section:nth-child(even) {
     }
 
     .nav-toggle {
-        display: flex;
+        display: block; 
+        cursor: pointer;
+    }
+    
+    .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        background-color: white;
     }
     
     .hero-container {
-        flex-direction: column; /* 화면 작아지면 세로 정렬 */
+        flex-direction: column; 
         text-align: center;
         gap: 2rem;
     }
 
     .hero-content {
-        text-align: center; /* 텍스트 가운데 정렬 */
+        text-align: center;
     }
     
     .hero-buttons {
-        justify-content: center; /* 버튼 가운데 정렬 */
+        justify-content: center;
     }
 
     .hero-name {
