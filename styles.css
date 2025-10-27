@@ -1,4 +1,20 @@
+/* ==============================================
+  === 새로운 포트폴리오 스타일 (다크 모드 테마) ===
+  ==============================================
+*/
 
+/* 0. CSS 변수 (테마 색상 정의) */
+:root {
+    --bg-color: #1a1a1a;        /* 메인 배경색 (매우 어두운 회색) */
+    --bg-color-secondary: #242424; /* 보조 배경색 (조금 더 밝은 회색) */
+    --text-color: #e0e0e0;       /* 기본 글자색 (밝은 회색) */
+    --text-color-darker: #a0a0a0; /* 보조 글자색 (어두운 회색) */
+    --accent-color: #00c7b1;     /* 포인트 색상 (민트/틸) */
+    --accent-color-hover: #00e0c8; /* 포인트 색상 (호버) */
+    --border-color: #3a3a3a;     /* 테두리색 */
+}
+
+/* 1. Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -8,8 +24,8 @@
 body {
     font-family: 'Noto Sans KR', sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #fff;
+    color: var(--text-color);
+    background-color: var(--bg-color);
 }
 
 .container {
@@ -18,14 +34,15 @@ body {
     padding: 0 20px;
 }
 
+/* 2. Navigation */
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    border-bottom: 1px solid #e0e0e0;
+    background: rgba(26, 26, 26, 0.85); /* 반투명 다크 배경 */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
     z-index: 1000;
-    transition: all 0.3s ease;
 }
 
 .nav-container {
@@ -38,7 +55,7 @@ body {
 .nav-logo a {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #2c3e50;
+    color: white; /* 로고는 흰색 */
     text-decoration: none;
 }
 
@@ -49,16 +66,17 @@ body {
 }
 
 .nav-link {
-    color: #666;
+    color: var(--text-color);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
 .nav-link:hover {
-    color: #3498db;
+    color: var(--accent-color); /* 호버 시 민트색 */
 }
 
+/* 모바일 메뉴 토글 (햄버거 버튼) */
 .nav-toggle {
     display: none;
     flex-direction: column;
@@ -68,53 +86,70 @@ body {
 .bar {
     width: 25px;
     height: 3px;
-    background-color: #333;
+    background-color: white; /* 햄버거 버튼 흰색 */
     margin: 3px 0;
     transition: 0.3s;
 }
 
+/* 3. Hero Section (중앙 정렬) */
 .hero {
-    padding: 120px 0 80px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 140px 0 100px;
+    /* 어두운 그라데이션 배경 */
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
     color: white;
-    overflow: hidden;
+    text-align: center; /* 모든 컨텐츠 중앙 정렬 */
 }
 
 .hero-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.profile-picture {
+    width: 200px; /* 크기 조정 */
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%; /* 원형 프로필 */
+    border: 5px solid var(--accent-color); /* 민트색 테두리 */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    margin-bottom: 2rem;
 }
 
 .hero-title {
     font-size: 1.2rem;
     font-weight: 300;
     margin-bottom: 0.5rem;
-    opacity: 0.9;
+    color: var(--text-color-darker);
 }
 
 .hero-name {
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
+    /* 민트색 텍스트 그라데이션 (선택 사항) */
+    background: linear-gradient(45deg, var(--accent-color), #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .hero-description {
     font-size: 1.1rem;
     line-height: 1.8;
-    margin-bottom: 2rem;
-    opacity: 0.9;
+    margin-bottom: 2.5rem;
+    color: var(--text-color);
 }
 
 .hero-buttons {
     display: flex;
     gap: 1rem;
+    justify-content: center; /* 버튼 중앙 정렬 */
 }
 
+/* 4. 공용 버튼 스타일 (새로운 테마) */
 .btn {
     padding: 12px 24px;
-    border: none;
+    border: 2px solid var(--accent-color);
     border-radius: 6px;
     font-size: 1rem;
     font-weight: 500;
@@ -125,52 +160,35 @@ body {
 }
 
 .btn-primary {
-    background-color: #3498db;
-    color: white;
+    background-color: var(--accent-color);
+    color: #1a1a1a; /* 어두운 글자색 */
 }
 
 .btn-primary:hover {
-    background-color: #2980b9;
+    background-color: var(--accent-color-hover);
+    border-color: var(--accent-color-hover);
     transform: translateY(-2px);
 }
 
 .btn-secondary {
-    background-color: #6c757d;
-    color: white;
+    background-color: transparent;
+    color: var(--accent-color);
 }
 
 .btn-secondary:hover {
-    background-color: #5a6268;
+    background-color: var(--accent-color);
+    color: #1a1a1a;
     transform: translateY(-2px);
 }
 
-.btn-success {
-    background-color: #28a745;
-    color: white;
-}
-
-.btn-success:hover {
-    background-color: #218838;
-}
-
-
-.hero-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.profile-picture {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 20px;
-    border: 3px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
+/* 5. Section (공통) */
 section {
     padding: 80px 0;
+}
+
+/* 짝수 섹션 배경색 다르게 */
+section:nth-child(even) {
+     background-color: var(--bg-color-secondary);
 }
 
 .section-title {
@@ -178,61 +196,70 @@ section {
     font-weight: 700;
     text-align: center;
     margin-bottom: 3rem;
-    color: #2c3e50;
+    color: white; /* 흰색 제목 */
     position: relative;
 }
 
+/* 섹션 제목 아래 밑줄 */
 .section-title::after {
     content: '';
     position: absolute;
     width: 80px;
     height: 4px;
-    background: linear-gradient(45deg, #3498db, #667eea);
+    background: var(--accent-color); /* 민트색 밑줄 */
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 2px;
 }
 
+/* 6. About Section */
 .about {
-    background-color: #f8f9fa;
+     background-color: var(--bg-color-secondary);
 }
 
 .about-content {
-    display: grid;
-    grid-template-columns: 1fr; 
-    gap: 2rem;
-    align-items: start;
     max-width: 800px;
     margin: 0 auto;
+    text-align: center;
 }
 
 .about-text h3 {
     font-size: 1.8rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: #2c3e50;
+    color: white;
 }
 
 .about-text p {
     font-size: 1.1rem;
     line-height: 1.8;
     margin-bottom: 2rem;
-    color: #666;
+    color: var(--text-color);
 }
 
 .about-highlights {
     display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
+    text-align: left;
+}
+
+.highlight-item {
+    background: var(--bg-color);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-color);
 }
 
 .highlight-item h4 {
     font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
-    color: #3498db;
+    color: var(--accent-color);
 }
 
+/* 7. Projects Section */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -240,19 +267,18 @@ section {
 }
 
 .project-card {
-    background: white;
-    border-radius: 15px;
+    background: var(--bg-color-secondary);
+    border-radius: 10px;
     padding: 2rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color); /* 그림자 대신 테두리 */
     transition: all 0.3s ease;
-    border-top: 4px solid #3498db;
     display: flex;
     flex-direction: column;
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+    border-color: var(--accent-color); /* 호버 시 테두리색 변경 */
 }
 
 .project-header {
@@ -263,8 +289,9 @@ section {
 }
 
 .project-icon {
-    font-size: 2rem;
+    font-size: 1.5rem;
     flex-shrink: 0;
+    margin-top: 5px;
 }
 
 .project-title-section {
@@ -274,13 +301,13 @@ section {
 .project-title {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #2c3e50;
+    color: white;
     margin-bottom: 0.25rem;
 }
 
 .project-subtitle {
     font-size: 0.9rem;
-    color: #666;
+    color: var(--text-color-darker);
     margin: 0;
 }
 
@@ -293,19 +320,16 @@ section {
     border-radius: 15px;
     font-size: 0.8rem;
     font-weight: 500;
-}
-
-.status-badge.production {
-    background-color: #d4edda;
-    color: #155724;
+    background-color: var(--accent-color);
+    color: #1a1a1a;
 }
 
 .project-description {
     font-size: 1rem;
     line-height: 1.6;
-    color: #666;
+    color: var(--text-color);
     margin-bottom: 1.5rem;
-    flex-grow: 1; 
+    flex-grow: 1;
 }
 
 .project-features {
@@ -315,7 +339,7 @@ section {
 
 .project-features li {
     padding: 0.25rem 0;
-    color: #666;
+    color: var(--text-color);
     position: relative;
     padding-left: 1.5rem;
 }
@@ -324,7 +348,7 @@ section {
     content: '✓';
     position: absolute;
     left: 0;
-    color: #27ae60;
+    color: var(--accent-color); /* 민트색 체크마크 */
     font-weight: bold;
 }
 
@@ -337,8 +361,8 @@ section {
 
 .tech-tag {
     padding: 0.25rem 0.75rem;
-    background-color: #e8f4fd;
-    color: #3498db;
+    background-color: var(--border-color); /* 어두운 태그 */
+    color: var(--text-color);
     border-radius: 15px;
     font-size: 0.8rem;
     font-weight: 500;
@@ -347,7 +371,7 @@ section {
 .project-links {
     display: flex;
     gap: 1rem;
-    margin-top: auto; 
+    margin-top: auto;
 }
 
 .project-links .btn {
@@ -355,8 +379,9 @@ section {
     text-align: center;
 }
 
+/* 8. Skills Section */
 .skills {
-    background-color: #f8f9fa;
+    background-color: var(--bg-color-secondary);
 }
 
 .skills-content {
@@ -369,7 +394,7 @@ section {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 2rem;
-    color: #2c3e50;
+    color: white;
 }
 
 .skill-item {
@@ -380,11 +405,11 @@ section {
     font-size: 1rem;
     font-weight: 500;
     margin-bottom: 0.5rem;
-    color: #2c3e50;
+    color: var(--text-color);
 }
 
 .skill-level {
-    background-color: #e0e0e0;
+    background-color: var(--border-color); /* 스킬 바 배경 */
     border-radius: 10px;
     height: 8px;
     overflow: hidden;
@@ -392,12 +417,13 @@ section {
 
 .skill-bar {
     height: 100%;
-    background: linear-gradient(45deg, #3498db, #667eea);
+    background: var(--accent-color); /* 민트색 스킬 바 */
     border-radius: 10px;
     transition: width 1s ease-in-out;
-    width: 0; 
+    width: 0;
 }
 
+/* 9. Contact Section */
 .contact-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -409,13 +435,13 @@ section {
     font-size: 1.8rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: #2c3e50;
+    color: white;
 }
 
 .contact-info p {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: #666;
+    color: var(--text-color);
     margin-bottom: 2rem;
 }
 
@@ -433,28 +459,28 @@ section {
 
 .contact-method i {
     font-size: 1.5rem;
-    color: #3498db;
+    color: var(--accent-color);
     font-style: normal;
 }
 
 .contact-method h4 {
     font-size: 1.1rem;
     font-weight: 600;
-    color: #2c3e50;
+    color: white;
     margin-bottom: 0.25rem;
 }
 
 .contact-method p {
     font-size: 1rem;
-    color: #666;
+    color: var(--text-color-darker);
     margin: 0;
 }
 
 .contact-form {
-    background: white;
+    background: var(--bg-color-secondary);
     padding: 2rem;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
 }
 
 .form-group {
@@ -465,7 +491,9 @@ section {
 .form-group textarea {
     width: 100%;
     padding: 12px 16px;
-    border: 2px solid #e0e0e0;
+    border: 2px solid var(--border-color);
+    background: var(--bg-color);
+    color: var(--text-color);
     border-radius: 8px;
     font-size: 1rem;
     font-family: inherit;
@@ -475,7 +503,7 @@ section {
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #3498db;
+    border-color: var(--accent-color);
 }
 
 .form-group textarea {
@@ -483,10 +511,12 @@ section {
     min-height: 120px;
 }
 
+/* 10. Footer */
 .footer {
-    background-color: #2c3e50;
-    color: white;
+    background-color: #111; /* 푸터는 더 어둡게 */
+    color: var(--text-color-darker);
     padding: 2rem 0;
+    border-top: 1px solid var(--border-color);
 }
 
 .footer-content {
@@ -501,60 +531,51 @@ section {
 }
 
 .footer-links a {
-    color: white;
+    color: var(--text-color-darker);
     text-decoration: none;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
+    transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
-    opacity: 1;
+    color: var(--accent-color);
 }
 
+/* 11. 반응형 디자인 (모바일) */
 @media (max-width: 768px) {
+    /* 모바일 네비게이션 메뉴 */
     .nav-menu {
         position: fixed;
-        left: -100%; 
+        left: -100%;
         top: 70px;
         flex-direction: column;
-        background-color: white;
+        background: var(--bg-color-secondary); /* 다크 모드 메뉴 */
         width: 100%;
         text-align: center;
         transition: 0.3s;
-        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.2);
         padding: 2rem 0;
         gap: 2.5rem;
     }
 
     .nav-menu.active {
-        left: 0; 
+        left: 0;
     }
 
     .nav-toggle {
-        display: flex; 
-    }
-
-    .hero-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 2rem;
-    }
-    
-    .hero-image {
-        order: -1; /* 이미지를 위로 */
+        display: flex;
     }
 
     .hero-name {
         font-size: 2.5rem;
     }
-
-    .hero-buttons {
-        justify-content: center;
-    }
     
     .profile-picture {
-        width: 250px;
-        height: 250px;
+        width: 150px;
+        height: 150px;
+    }
+
+    .about-highlights {
+        grid-template-columns: 1fr;
     }
 
     .projects-grid {
@@ -577,6 +598,7 @@ section {
     }
 }
 
+/* 12. 애니메이션 (동일하게 사용) */
 .fade-in {
     opacity: 0;
     transform: translateY(30px);
