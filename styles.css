@@ -1,20 +1,14 @@
-/* ==============================================
-  === 새로운 포트폴리오 스타일 (다크 모드 테마) ===
-  ==============================================
-*/
 
-/* 0. CSS 변수 (테마 색상 정의) */
 :root {
-    --bg-color: #1a1a1a;        /* 메인 배경색 (매우 어두운 회색) */
-    --bg-color-secondary: #242424; /* 보조 배경색 (조금 더 밝은 회색) */
-    --text-color: #e0e0e0;       /* 기본 글자색 (밝은 회색) */
-    --text-color-darker: #a0a0a0; /* 보조 글자색 (어두운 회색) */
-    --accent-color: #00c7b1;     /* 포인트 색상 (민트/틸) */
-    --accent-color-hover: #00e0c8; /* 포인트 색상 (호버) */
-    --border-color: #3a3a3a;     /* 테두리색 */
+    --bg-color: #1a1a1a;        
+    --bg-color-secondary: #242424; 
+    --text-color: #e0e0e0;       
+    --text-color-darker: #a0a0a0; 
+    --accent-color: #00c7b1;    
+    --accent-color-hover: #00e0c8;
+    --border-color: #3a3a3a;    
 }
 
-/* 1. Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -34,12 +28,11 @@ body {
     padding: 0 20px;
 }
 
-/* 2. Navigation */
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(26, 26, 26, 0.85); /* 반투명 다크 배경 */
+    background: rgba(26, 26, 26, 0.85); 
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
     z-index: 1000;
@@ -55,7 +48,7 @@ body {
 .nav-logo a {
     font-size: 1.5rem;
     font-weight: 700;
-    color: white; /* 로고는 흰색 */
+    color: white; 
     text-decoration: none;
 }
 
@@ -73,10 +66,9 @@ body {
 }
 
 .nav-link:hover {
-    color: var(--accent-color); /* 호버 시 민트색 */
+    color: var(--accent-color); 
 }
 
-/* 모바일 메뉴 토글 (햄버거 버튼) */
 .nav-toggle {
     display: none;
     flex-direction: column;
@@ -86,18 +78,16 @@ body {
 .bar {
     width: 25px;
     height: 3px;
-    background-color: white; /* 햄버거 버튼 흰색 */
+    background-color: white; 
     margin: 3px 0;
     transition: 0.3s;
 }
 
-/* 3. Hero Section (중앙 정렬) */
 .hero {
     padding: 140px 0 100px;
-    /* 어두운 그라데이션 배경 */
     background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
     color: white;
-    text-align: center; /* 모든 컨텐츠 중앙 정렬 */
+    text-align: center; 
 }
 
 .hero-container {
@@ -106,11 +96,11 @@ body {
 }
 
 .profile-picture {
-    width: 200px; /* 크기 조정 */
+    width: 200px;
     height: 200px;
     object-fit: cover;
-    border-radius: 50%; /* 원형 프로필 */
-    border: 5px solid var(--accent-color); /* 민트색 테두리 */
+    border-radius: 50%; 
+    border: 5px solid var(--accent-color); 
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     margin-bottom: 2rem;
 }
@@ -126,7 +116,6 @@ body {
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    /* 민트색 텍스트 그라데이션 (선택 사항) */
     background: linear-gradient(45deg, var(--accent-color), #ffffff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -143,10 +132,9 @@ body {
 .hero-buttons {
     display: flex;
     gap: 1rem;
-    justify-content: center; /* 버튼 중앙 정렬 */
+    justify-content: center; 
 }
 
-/* 4. 공용 버튼 스타일 (새로운 테마) */
 .btn {
     padding: 12px 24px;
     border: 2px solid var(--accent-color);
@@ -161,7 +149,7 @@ body {
 
 .btn-primary {
     background-color: var(--accent-color);
-    color: #1a1a1a; /* 어두운 글자색 */
+    color: #1a1a1a;
 }
 
 .btn-primary:hover {
@@ -181,12 +169,10 @@ body {
     transform: translateY(-2px);
 }
 
-/* 5. Section (공통) */
 section {
     padding: 80px 0;
 }
 
-/* 짝수 섹션 배경색 다르게 */
 section:nth-child(even) {
      background-color: var(--bg-color-secondary);
 }
@@ -196,24 +182,22 @@ section:nth-child(even) {
     font-weight: 700;
     text-align: center;
     margin-bottom: 3rem;
-    color: white; /* 흰색 제목 */
+    color: white; 
     position: relative;
 }
 
-/* 섹션 제목 아래 밑줄 */
 .section-title::after {
     content: '';
     position: absolute;
     width: 80px;
     height: 4px;
-    background: var(--accent-color); /* 민트색 밑줄 */
+    background: var(--accent-color);
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 2px;
 }
 
-/* 6. About Section */
 .about {
      background-color: var(--bg-color-secondary);
 }
@@ -259,7 +243,6 @@ section:nth-child(even) {
     color: var(--accent-color);
 }
 
-/* 7. Projects Section */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -270,7 +253,7 @@ section:nth-child(even) {
     background: var(--bg-color-secondary);
     border-radius: 10px;
     padding: 2rem;
-    border: 1px solid var(--border-color); /* 그림자 대신 테두리 */
+    border: 1px solid var(--border-color); 
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -278,7 +261,7 @@ section:nth-child(even) {
 
 .project-card:hover {
     transform: translateY(-5px);
-    border-color: var(--accent-color); /* 호버 시 테두리색 변경 */
+    border-color: var(--accent-color); 
 }
 
 .project-header {
@@ -348,7 +331,7 @@ section:nth-child(even) {
     content: '✓';
     position: absolute;
     left: 0;
-    color: var(--accent-color); /* 민트색 체크마크 */
+    color: var(--accent-color); 
     font-weight: bold;
 }
 
@@ -361,7 +344,7 @@ section:nth-child(even) {
 
 .tech-tag {
     padding: 0.25rem 0.75rem;
-    background-color: var(--border-color); /* 어두운 태그 */
+    background-color: var(--border-color); 
     color: var(--text-color);
     border-radius: 15px;
     font-size: 0.8rem;
@@ -379,7 +362,6 @@ section:nth-child(even) {
     text-align: center;
 }
 
-/* 8. Skills Section */
 .skills {
     background-color: var(--bg-color-secondary);
 }
@@ -409,7 +391,7 @@ section:nth-child(even) {
 }
 
 .skill-level {
-    background-color: var(--border-color); /* 스킬 바 배경 */
+    background-color: var(--border-color); 
     border-radius: 10px;
     height: 8px;
     overflow: hidden;
@@ -417,13 +399,12 @@ section:nth-child(even) {
 
 .skill-bar {
     height: 100%;
-    background: var(--accent-color); /* 민트색 스킬 바 */
+    background: var(--accent-color); 
     border-radius: 10px;
     transition: width 1s ease-in-out;
     width: 0;
 }
 
-/* 9. Contact Section */
 .contact-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -511,9 +492,8 @@ section:nth-child(even) {
     min-height: 120px;
 }
 
-/* 10. Footer */
 .footer {
-    background-color: #111; /* 푸터는 더 어둡게 */
+    background-color: #111;
     color: var(--text-color-darker);
     padding: 2rem 0;
     border-top: 1px solid var(--border-color);
@@ -540,15 +520,13 @@ section:nth-child(even) {
     color: var(--accent-color);
 }
 
-/* 11. 반응형 디자인 (모바일) */
 @media (max-width: 768px) {
-    /* 모바일 네비게이션 메뉴 */
     .nav-menu {
         position: fixed;
         left: -100%;
         top: 70px;
         flex-direction: column;
-        background: var(--bg-color-secondary); /* 다크 모드 메뉴 */
+        background: var(--bg-color-secondary); 
         width: 100%;
         text-align: center;
         transition: 0.3s;
@@ -598,7 +576,6 @@ section:nth-child(even) {
     }
 }
 
-/* 12. 애니메이션 (동일하게 사용) */
 .fade-in {
     opacity: 0;
     transform: translateY(30px);
