@@ -548,7 +548,7 @@ section:nth-child(even) {
 }
 
 .awards {
-    background-color: var(--accent-color);
+    background-color: var(--bg-color-secondary);
 }
 
 .awards-grid {
