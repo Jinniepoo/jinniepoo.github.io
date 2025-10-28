@@ -547,6 +547,50 @@ section:nth-child(even) {
     color: var(--accent-color);
 }
 
+.awards {
+    background-color: var(--bg-color); /* skills 섹션과 배경색 교차 */
+}
+
+.awards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+}
+
+.awards-category h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: white;
+}
+
+.award-item {
+    background: var(--bg-color-secondary);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-color);
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.award-item:hover {
+    transform: translateX(5px);
+    border-left-color: var(--accent-color-hover);
+}
+
+.award-item h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+}
+
+.award-item .award-meta {
+    font-size: 0.9rem;
+    color: var(--text-color-darker);
+    margin: 0;
+}
+
 @media (max-width: 768px) {
     .nav-menu {
         position: fixed;
@@ -561,8 +605,11 @@ section:nth-child(even) {
         padding: 2rem 0;
         gap: 2.5rem;
         margin-left: 0; 
-    }
 
+        .awards-grid {
+        grid-template-columns: 1fr;
+    }
+    
     .nav-menu.active {
         left: 0;
     }
