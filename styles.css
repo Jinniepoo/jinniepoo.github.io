@@ -548,7 +548,7 @@ section:nth-child(even) {
 }
 
 .awards {
-    background-color: var(--bg-color); /* skills 섹션과 배경색 교차 */
+    background-color: var(--accent-color);
 }
 
 .awards-grid {
