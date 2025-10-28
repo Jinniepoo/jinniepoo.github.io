@@ -246,6 +246,16 @@ section:nth-child(even) {
     margin-right: 8px; 
 }
 
+.major {
+    margin-bottom: 4px; 
+}
+
+.minor {
+    font-size: 0.9em; 
+    color: var(--text-color-darker); 
+    padding-left: 28px; 
+}
+
 .highlight-item {
     background: var(--bg-color);
     padding: 1rem 1.5rem;
