@@ -40,7 +40,6 @@ body {
 .nav-container {
     display: flex;
     align-items: center;
-    justify-content: space-between; 
     height: 70px;
     max-width: 1200px;
     margin: 0 auto;
@@ -568,6 +567,10 @@ section:nth-child(even) {
         left: 0;
     }
 
+    .nav-container {
+        justify-content: space-between;
+    }
+    
     .nav-toggle {
         display: block; 
         cursor: pointer;
