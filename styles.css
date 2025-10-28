@@ -605,8 +605,9 @@ section:nth-child(even) {
         padding: 2rem 0;
         gap: 2.5rem;
         margin-left: 0; 
-
-        .awards-grid {
+    }
+    
+    .awards-grid {
         grid-template-columns: 1fr;
     }
     
