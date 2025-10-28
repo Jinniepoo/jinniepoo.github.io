@@ -88,6 +88,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 0 2rem;
+    gap: 2rem;
 }
 
 .hero-image {
@@ -104,8 +105,7 @@ body {
 }
 
 .hero-content {
-    text-align: left;
-    flex-basis: 60%;
+    flex-basis: 65%;
 }
 
 .hero-title {
@@ -206,9 +206,16 @@ section:nth-child(even) {
 }
 
 .about-content {
-    max-width: 800px;
+    max-width: 960px;
     margin: 0 auto;
     text-align: left;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; 
+    gap: 3rem;
+    align-items: start;
 }
 
 .about-text h3 {
@@ -227,9 +234,16 @@ section:nth-child(even) {
 
 .about-highlights {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 1.5rem;
     text-align: left;
+}
+
+.school-logo {
+    width: 20px; 
+    height: 20px; 
+    vertical-align: middle;
+    margin-right: 8px; 
 }
 
 .highlight-item {
