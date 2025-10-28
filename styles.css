@@ -589,22 +589,33 @@ section:nth-child(even) {
     }
 
     .hero-content {
-        text-align: center;
+        display: contents;
     }
     
     .hero-buttons {
-        justify-content: center;
+        order: 2; 
+        width: 100%;
     }
 
+    .hero-buttons .btn {
+        width: 100%; 
+    }
     .hero-name {
         font-size: 2.5rem;
     }
     
+    .hero-image {
+        order: 1; 
+    }
     .profile-picture {
         width: 150px;
         height: 150px;
     }
 
+    .about-grid {
+        grid-template-columns: 1fr; 
+    }
+    
     .about-highlights {
         grid-template-columns: 1fr;
     }
