@@ -568,7 +568,7 @@ section:nth-child(even) {
     background: var(--bg-color-secondary);
     padding: 1rem 1.5rem;
     border-radius: 8px;
-    border-left: 4px solid;
+    border-left: 4px solid var((--accent-color-hover);
     margin-bottom: 1.5rem;
     color: white;
     transition: all 0.3s ease;
@@ -576,7 +576,7 @@ section:nth-child(even) {
 
 .award-item:hover {
     transform: translateX(5px);
-    border-left-color: var(--accent-color-hover);
+    border-left-color: var(--accent-color);
 }
 
 .award-item h4 {
