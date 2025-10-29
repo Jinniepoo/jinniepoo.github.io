@@ -565,7 +565,7 @@ section:nth-child(even) {
 }
 
 .award-item {
-    background: var(--bg-color-secondary);
+    background: var(--bg-color);
     padding: 1rem 1.5rem;
     border-radius: 8px;
     border-left: 4px solid var((--accent-color-hover);
