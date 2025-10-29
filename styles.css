@@ -561,14 +561,14 @@ section:nth-child(even) {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 2rem;
-    color: white;
+    color: var(--accent-color);
 }
 
 .award-item {
     background: var(--bg-color-secondary);
     padding: 1rem 1.5rem;
     border-radius: 8px;
-    border-left: 4px solid var(--accent-color);
+    border-left: 4px solid var(white);
     margin-bottom: 1.5rem;
     transition: all 0.3s ease;
 }
