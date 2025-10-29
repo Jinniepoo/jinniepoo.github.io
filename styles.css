@@ -253,7 +253,7 @@ section:nth-child(even) {
 .minor {
     font-size: 0.9em; 
     color: var(--text-color-darker); 
-    padding-left: 30px; 
+    padding-left: 32px; 
 }
 
 .highlight-item {
