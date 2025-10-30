@@ -642,7 +642,7 @@ section:nth-child(even) {
     }
 
     .hero-content {
-        display: block;
+        display: contents;
     }
     
     .hero-buttons {
