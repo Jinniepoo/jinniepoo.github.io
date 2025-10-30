@@ -568,7 +568,7 @@ section:nth-child(even) {
     background: var(--bg-color);
     padding: 1rem 1.5rem;
     border-radius: 8px;
-    border-left: 4px solid var((--accent-color-hover);
+    border-left: 4px solid var(--accent-color-hover);
     margin-bottom: 1.5rem;
     color: white;
     transition: all 0.3s ease;
