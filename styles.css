@@ -503,23 +503,82 @@ section:nth-child(even) {
     display: none;
 }
 
-#modal-details-content h3 {
-    color: #333;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 10px;
+.modal-rich-details {
+    padding-top: 20px;
+}
+.modal-feature-section {
+    margin-top: 40px;
+}
+.modal-feature-section h3 { 
+    font-size: 1.8rem;
+    color: white; 
     margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border-color);
 }
-
-#modal-details-content ul {
-    list-style-type: disc;
-    padding-left: 25px;
-    line-height: 1.6;
+.modal-feature-section h4 { 
+    font-size: 1.4rem; 
+    font-weight: 700; 
+    color: var(--accent-color); 
+    margin-bottom: 10px;
 }
-
-#modal-details-content .tech-stack {
-    margin-top: 20px;
+.modal-feature-row { 
+    display: flex; 
+    align-items: center; 
+    gap: 30px; 
+    margin-bottom: 40px; 
+}
+.modal-feature-row img { 
+    max-width: 45%; 
+    height: auto; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+.modal-feature-row .text-content { 
+    flex: 1; 
+    line-height: 1.7; 
+    font-size: 1.05rem;
+}
+.modal-feature-row.reverse { 
+    flex-direction: row-reverse; 
+}
+.modal-feature-row p { 
+    margin-bottom: 1rem; 
+}
+.pastel-summary-container {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+.pastel-summary-left {
+    flex: 1.5; 
+}
+.pastel-summary-right {
+    flex: 1;
+    border-left: 2px solid var(--accent-color);
+    padding-left: 30px;
+}
+.pastel-summary-right h4 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+.pastel-summary-right ul {
+    list-style: none;
+    padding: 0;
+}
+.pastel-summary-right ul li {
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 15px;
+    font-size: 1.05rem;
+}
+.pastel-summary-right ul li::before {
+    content: '-';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
     font-weight: bold;
-    color: #5cb85c;
 }
 
 .skills {
@@ -810,6 +869,26 @@ section:nth-child(even) {
         grid-template-columns: 1fr;
     }
 
+    .modal-feature-row, .modal-feature-row.reverse {
+        flex-direction: column; 
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .modal-feature-row img {
+        max-width: 100%;
+        margin-top: 10px;
+    }
+    .pastel-summary-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .pastel-summary-right {
+        padding-left: 0;
+        border-left: none;
+        border-top: 1px solid var(--border-color);
+        padding-top: 20px;
+    }
+    
     .skills-content {
         grid-template-columns: 1fr;
     }
