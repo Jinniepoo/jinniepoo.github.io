@@ -100,7 +100,6 @@ const projectDetails = {
             "상호작용형 레벨 Gimmick 설계 및 구현",
             "Instancing 및 Frustum Culling을 활용한 렌더링 최적화"
         ],
-        tech: ["C++", "DirectX11", "HLSL", "Blender"],
         links: [
             { text: "GitHub", url: "https://github.com/Jinniepoo/D3D11_NSLT3D", primary: false }
         ]
@@ -117,7 +116,6 @@ const projectDetails = {
             "Pixel Picking을 이용한 오브젝트 선택 및 편집 기능",
             "Frustum Culling 및 LOD 적용을 통한 렌더링 부하 최적화"
         ],
-        tech: ["C++", "DirectX11", "HLSL"],
         links: [
             { text: "YouTube", url: "https://www.youtube.com/watch?v=lGg6B_-HBl8", primary: true }
         ]
@@ -134,7 +132,6 @@ const projectDetails = {
             "NPC 상호작용 및 퀘스트 관리 시스템",
             "Shuriken Particle System을 활용한 이펙트 연출"
         ],
-        tech: ["C#", "Unity3D", "Unity6", "Blender"],
         links: [
             { text: "GitHub", url: "https://github.com/Jinniepoo/Unity3D_Undervein", primary: false }
         ],
@@ -218,7 +215,6 @@ const projectDetails = {
             "최고 점수 기록 및 Unity PlayerPrefs를 이용한 데이터 저장",
             "연속 블록 제거에 따른 보너스 점수 시스템"
         ],
-        tech: ["C#", "Unity"],
         links: [
             { text: "GitHub", url: "https://github.com/Jinniepoo/PastelBlocks", primary: true }
         ],
