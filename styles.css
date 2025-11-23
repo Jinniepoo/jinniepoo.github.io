@@ -418,12 +418,25 @@ section:nth-child(even) {
     text-align: center;
 }
 
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1001; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.85); 
+    backdrop-filter: blur(5px);
+}
+
 .modal-content {
-    background-color: #fefefe;
+    background-color: var(--bg-color-secondary);
     margin: 5% auto; 
     padding: 30px;
     border-radius: 12px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--text-color);
     width: 90%; 
     max-width: 800px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
@@ -433,7 +446,7 @@ section:nth-child(even) {
 }
 
 .close-button {
-    color: #aaa;
+    color: var(--text-color);
     float: right;
     font-size: 38px;
     font-weight: bold;
@@ -444,7 +457,7 @@ section:nth-child(even) {
 
 .close-button:hover,
 .close-button:focus {
-    color: #333;
+    color: var(--accent-color); 
     text-decoration: none;
 }
 
