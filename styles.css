@@ -309,8 +309,38 @@ section:nth-child(even) {
     margin-right: 1rem; 
 
     cursor: pointer;
+    position: relative; 
+    overflow: hidden;
 }
 
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 199, 177, 0.9); 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    z-index: 5;
+    opacity: 0; /
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+    border-radius: 10px; 
+}
+
+.project-overlay .overlay-text {
+    font-size: 1.5rem; 
+    font-weight: 700;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1; 
+}
 .projects-grid .project-card:last-child {
     margin-right: 0;
 }
