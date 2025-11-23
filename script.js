@@ -234,7 +234,7 @@ const projectDetails = {
                         <p><strong>문제 해결 방법:</strong> Grid Data Array를 통해 그리드 상태를 관리하고, 블록의 모양을 정의하는 Shape Data와 대조하는 CanPlaceShape 로직을 핵심으로 구현했습니다.</p>
                         <p><strong>해결 과정:</strong> 2차원 배열로 그리드 상태를 관리하고, 블록 드래그 시 마우스 위치와 블록 모양 배열을 대조하여 배치 가능 여부를 실시간으로 판단합니다. 마우스 오버 시 미리보기(Hover Block)를 제공하여 UX를 개선했습니다.</p>
                     </div>
-                    <img src="https://raw.githubusercontent.com/Jinniepoo/PastelBlocks/tree/main/Imgs/Horizontal.gif" alt="Horizontal 블록 완성 GIF" />
+                    <img src="https://raw.githubusercontent.com/Jinniepoo/PastelBlocks/main/Imgs/Horizontal.gif" alt="Horizontal 블록 완성 GIF" />
                 </div>
             </div>
             
@@ -247,7 +247,7 @@ const projectDetails = {
                         <p><strong>문제 해결 방법:</strong> ShapeStorage 클래스로 Queue 방식의 블록 관리 시스템을 구축하고, RequestNewShape 시스템을 통해 블록 큐를 리셋하는 로직을 구현했습니다.</p>
                         <p><strong>해결 과정:</strong> \`ShapeData\` Scriptable Object를 이용하여 블록 모양/색상 데이터를 분리하고, \`ShapeStorage\`가 3개의 블록을 추적합니다. 모든 블록이 배치 불가능 상태일 때, 버튼 클릭 등 조건 하에 \`RequestNewShape\` 함수를 호출하여 현재 큐를 버리고 새로운 3개 세트로 교체하여 게임의 지속성을 높였습니다.</p>
                 </div>
-                <img src="https://raw.githubusercontent.com/Jinniepoo/PastelBlocks/tree/main/Imgs/RequestNewShape.gif" alt= "블록 리셋 시스템 GIF" />
+                <img src="https://raw.githubusercontent.com/Jinniepoo/PastelBlocks/main/Imgs/RequestNewShape.gif" alt= "블록 리셋 시스템 GIF" />
             </div>
 
             <div class="modal-feature-section">
@@ -259,7 +259,7 @@ const projectDetails = {
                         <p><strong>문제 해결 방법:</strong> BonusManager를 활용하여 Chain Count 시스템을 추적하고, 제거된 라인 수 기반의 점수 승수를 적용하는 로직을 구현했습니다.</p>
                         <p><strong>해결 과정:</strong> 라인 제거 성공 시마다 Chain Count를 증가시키고, 기본 점수에 승수를 적용하여 보너스 점수를 차등 지급했습니다. 한 번의 배치로 여러 줄이 제거되면 라인 수에 비례한 Multi-Clear Bonus를 합산하여 최종 점수를 산출합니다.</p>
                 </div>
-                <img src="https://raw.githubusercontent.com/Jinniepoo/PastelBlocks/tree/main/Imgs/Horizontal.gif" alt="Bonus 시스템 GIF" />
+                <img src="https://raw.githubusercontent.com/Jinniepoo/PastelBlocks/main/Imgs/Horizontal.gif" alt="Bonus 시스템 GIF" />
             </div>
 
             <div class="modal-feature-section">
@@ -271,7 +271,7 @@ const projectDetails = {
                         <p><strong>문제 해결 방법:</strong> 간단한 데이터 저장은 Unity PlayerPrefs를 사용하고, 중요 데이터인 최고 점수는 Binary Serialization을 조합하여 데이터 지속성(Persistence)을 구현했습니다.</p>
                         <p><strong>해결 과정:</strong> \`BinaryData\` 유틸리티 클래스를 통해 최고 점수 데이터를 바이너리 파일로 직렬화하여 영구 저장합니다. 게임 시작 시 파일을 로드하고, 게임 중 실시간 점수를 PlayerPrefs에 임시 저장 후 최고 점수 갱신 시 바이너리 파일에 최종 저장하여 데이터 변조 위험을 낮추었습니다.</p>
                 </div>
-                <img src="https://raw.githubusercontent.com/Jinniepoo/PastelBlocks/tree/main/Imgs/GameOver.gif" alt="GameOver GIF" />
+                <img src="https://raw.githubusercontent.com/Jinniepoo/PastelBlocks/main/Imgs/GameOver.gif" alt="GameOver GIF" />
             </div>
         </div>`
     }
