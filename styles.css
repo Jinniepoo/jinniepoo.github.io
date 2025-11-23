@@ -271,17 +271,24 @@ section:nth-child(even) {
 }
 
 .projects-grid {
-    display: flex; 
-    overflow-x: auto; 
-    flex-wrap: nowrap;
+    gap: 2rem;
+    display: flex;        
+    flex-wrap: nowrap;    
+    overflow-x: auto;     
     padding-bottom: 20px; 
-    scroll-snap-type: x mandatory; 
 }
 
 .project-card {
-    flex: 0 0 320px; 
-    margin-right: 20px;
-    scroll-snap-align: start; 
+    background: var(--bg-color-secondary);
+    border-radius: 10px;
+    padding: 2rem;
+    border: 1px solid var(--border-color); 
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 350px; 
+    margin-right: 2rem; 
+
     cursor: pointer;
 }
 
