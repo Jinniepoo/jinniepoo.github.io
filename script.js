@@ -295,47 +295,63 @@ function openModal(projectId) {
         return `<a href="${link.url}" class="btn ${btnClass}" target="_blank">${link.text}</a>`;
     }).join('');
     
-    let mainContent;
-    let titleContent;
+    let summaryImageHtml = '';
+    let rightImageCount = project.bannerImage.length;
+    let rightImageHtml = '';
     
-    if (project.richContent) {
-        
-        titleContent = `
-            <h1 style="font-size: 2.2rem; margin-bottom: 5px; color: white;">${project.title} <span style="font-size: 1rem; color: var(--text-color-darker); font-weight: 400;">(${project.subtitle})</span></h1>
-        `;
-        
-        const featuresHtml = project.features.map(f => `<li>${f}</li>`).join('');
-        
-        mainContent = `
-            <div class="pastel-summary-container">
-                <div class="pastel-summary-left">
-                    <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 10px; color: var(--text-color);">
-                        ${project.description}
-                    </p>
+    if (rightImageCount === 1) {
+        summaryImageHtml = `<div class="left-column-image-wrapper"><img src="${project.bannerImage[0]}" alt="${project.title} 대표 이미지" class="project-summary-image single-left-image"></div>`;
+        rightImageCount = 0; 
+    } else if (rightImageCount > 1) {
+        rightImageHtml = project.bannerImage.map(src => {
+            return `<img src="${src}" alt="${project.title} 이미지" class="project-summary-image">`;
+        }).join('');
+    }
+
+    let rightColumnHtml = '';
+    if (rightImageCount > 0) {
+        rightColumnHtml = `
+            <div class="project-image-column ${rightImageCount > 1 ? 'pastel-images' : 'single-image'}">
+                <div class="image-wrapper">
+                    ${rightImageHtml}
                 </div>
-                <div class="pastel-summary-right">
-                    <h4>주요 기능 및 기여</h4>
-                    <ul>${featuresHtml}</ul>
+                <div class="project-links project-links-inline">
+                    ${linksHtml}
                 </div>
             </div>
+        `;
+    }
+    
+    const featuresHtml = project.features.map(f => `<li>${f}</li>`).join('');
+    let leftColumnHtml = `
+        <div class="project-text-column">
+            <h1 style="font-size: 2.2rem; margin-bottom: 5px; color: white;">${project.title} <span style="font-size: 1rem; color: var(--text-color-darker); font-weight: 400;">(${project.subtitle})</span></h1>
             
-            <hr style="border-top: 1px solid var(--border-color); margin: 30px 0;">
+            ${summaryImageHtml} <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 10px; color: var(--text-color); margin-bottom: 20px;">
+                ${project.description}
+            </p>
+            <hr style="border-top: 1px solid var(--border-color); margin: 20px 0;">
+            
+            <div class="features-list-wrapper">
+                <h4>주요 기능 및 기여</h4>
+                <ul>${featuresHtml}</ul>
+            </div>
+            ${(rightImageCount === 0) ? `<div class="project-links project-links-inline" style="margin-top: 20px; width: 100%;">${linksHtml}</div>` : ''} </div>
+    `;
+    
+    let mainSummaryHtml = `
+        <div class="new-modal-layout">
+            ${leftColumnHtml}
+            ${rightColumnHtml}
+        </div>
+    `;
 
+    let richDetailsHtml = '';
+    if (project.richContent) {
+        richDetailsHtml = `
+            <hr style="border-top: 1px solid var(--border-color); margin: 30px 0;">
+            <h3 style="font-size: 1.8rem; color: white; margin-bottom: 20px;">세부 구현 내용</h3>
             ${project.richContent}
-        `;
-    } else {
-        
-        let featuresHtml = project.features.map(f => `<li>${f}</li>`).join('');
-        
-        titleContent = `
-            <h2>${project.title}</h2>
-            <p class="project-subtitle" style="margin-bottom: 20px;">${project.subtitle}</p>
-            <p style="line-height: 1.7; margin-bottom: 30px;">${project.description}</p>
-        `;
-        
-        mainContent = `
-            <h3 class="modal-feature-title">주요 기능 및 기여</h3>
-            <ul>${featuresHtml}</ul>
         `;
     }
 
