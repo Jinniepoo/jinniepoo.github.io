@@ -226,7 +226,7 @@ const projectDetails = {
                 <div class="modal-feature-row">
                     <div class="text-content">
                         <h4>2차원 배열과 Shape Data를 활용한 정확하고 효율적인 블록 배치 및 유효성 검사 로직</h4>
-                        <p><strong>문제 정의:</strong> 10x10 그리드에 블록의 모양과 크기에 관계없이 정확히 배치하고, 회전된 모양도 유효성을 실시간으로 검사하여 오배치를 방지해야 했습니다.</p>
+                        <p><strong>문제 정의:</strong> 9x9 그리드에 블록의 모양과 크기에 관계없이 정확히 배치하고, 회전된 모양도 유효성을 실시간으로 검사하여 오배치를 방지해야 했습니다.</p>
                         <p><strong>문제 해결 방법:</strong> Grid Data Array를 통해 그리드 상태를 관리하고, 블록의 모양을 정의하는 Shape Data와 대조하는 CanPlaceShape 로직을 핵심으로 구현했습니다.</p>
                         <p><strong>해결 과정:</strong> 2차원 배열로 그리드 상태를 관리하고, 블록 드래그 시 마우스 위치와 블록 모양 배열을 대조하여 배치 가능 여부를 실시간으로 판단합니다. 마우스 오버 시 미리보기(Hover Block)를 제공하여 UX를 개선했습니다.</p>
                     </div>
@@ -241,7 +241,7 @@ const projectDetails = {
                         <h4>ShapeStorage를 활용한 효율적인 3개 블록 세트 관리 및 막혔을 때의 리셋 시스템</h4>
                         <p><strong>문제 정의:</strong> 플레이어에게 항상 3개의 블록 세트를 제공하고, 이 세트 내 모든 블록이 배치 불가능할 때 게임 오버 대신 새로운 블록을 요청할 수 있는 기능(리셋 시스템)이 필요했습니다.</p>
                         <p><strong>문제 해결 방법:</strong> ShapeStorage 클래스로 Queue 방식의 블록 관리 시스템을 구축하고, RequestNewShape 시스템을 통해 블록 큐를 리셋하는 로직을 구현했습니다.</p>
-                        <p><strong>해결 과정:</strong> \`ShapeData\` Scriptable Object를 이용하여 블록 모양/색상 데이터를 분리하고, \`ShapeStorage\`가 3개의 블록을 추적합니다. 모든 블록이 배치 불가능 상태일 때, 버튼 클릭 등 조건 하에 \`RequestNewShape\` 함수를 호출하여 현재 큐를 버리고 새로운 3개 세트로 교체하여 게임의 지속성을 높였습니다.</p>
+                        <p><strong>해결 과정:</strong> ShapeData Scriptable Object를 이용하여 블록 모양/색상 데이터를 분리하고, ShapeStorage가 3개의 블록을 추적합니다. 모든 블록이 배치 불가능 상태일 때, 버튼 클릭 등 조건 하에 RequestNewShape() 함수를 호출하여 현재 큐를 버리고 새로운 3개 세트로 교체하여 게임의 지속성을 높였습니다.</p>
                 </div>
                 <img src="https://raw.githubusercontent.com/Jinniepoo/PastelBlocks/main/Imgs/RequestNewShape.gif" alt= "블록 리셋 시스템 GIF" />
             </div>
@@ -265,7 +265,7 @@ const projectDetails = {
                         <h4>Unity PlayerPrefs와 Binary Serialization을 조합한 안전하고 영구적인 최고 점수 데이터 Persistence</h4>
                         <p><strong>문제 정의:</strong> 사용자의 최고 점수를 로컬 환경에 영구적으로 저장하고 불러와야 하며, 데이터의 안정성을 확보해야 했습니다.</p>
                         <p><strong>문제 해결 방법:</strong> 간단한 데이터 저장은 Unity PlayerPrefs를 사용하고, 중요 데이터인 최고 점수는 Binary Serialization을 조합하여 데이터 지속성(Persistence)을 구현했습니다.</p>
-                        <p><strong>해결 과정:</strong> \`BinaryData\` 유틸리티 클래스를 통해 최고 점수 데이터를 바이너리 파일로 직렬화하여 영구 저장합니다. 게임 시작 시 파일을 로드하고, 게임 중 실시간 점수를 PlayerPrefs에 임시 저장 후 최고 점수 갱신 시 바이너리 파일에 최종 저장하여 데이터 변조 위험을 낮추었습니다.</p>
+                        <p><strong>해결 과정:</strong> BinaryData 유틸리티 클래스를 통해 최고 점수 데이터를 바이너리 파일로 직렬화하여 영구 저장합니다. 게임 시작 시 파일을 로드하고, 게임 중 실시간 점수를 PlayerPrefs에 임시 저장 후 최고 점수 갱신 시 바이너리 파일에 최종 저장하여 데이터 변조 위험을 낮추었습니다.</p>
                 </div>
                 <img src="https://raw.githubusercontent.com/Jinniepoo/PastelBlocks/main/Imgs/GameOver.gif" alt="GameOver GIF" />
             </div>
