@@ -441,6 +441,9 @@ section:nth-child(even) {
     display: flex;
     gap: 1rem;
     margin-top: auto;
+
+    position: relative; 
+    z-index: 10;
 }
 
 .project-links .btn {
