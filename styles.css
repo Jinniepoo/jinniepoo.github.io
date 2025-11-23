@@ -270,6 +270,24 @@ section:nth-child(even) {
     color: var(--accent-color);
 }
 
+.projects-grid::-webkit-scrollbar {
+    height: 10px;
+}
+
+.projects-grid::-webkit-scrollbar-track {
+    background: var(--bg-color-secondary); 
+    border-radius: 10px;
+}
+
+.projects-grid::-webkit-scrollbar-thumb {
+    background: #5cb85c; 
+    border-radius: 10px;
+}
+
+.projects-grid::-webkit-scrollbar-thumb:hover {
+    background: #4cae4c;
+}
+
 .projects-grid {
     gap: 2rem;
     display: flex;        
