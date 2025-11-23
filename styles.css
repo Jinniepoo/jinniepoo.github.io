@@ -280,12 +280,12 @@ section:nth-child(even) {
 }
 
 .projects-grid::-webkit-scrollbar-thumb {
-    background: #5cb85c; 
+    background: #3a3a3a; 
     border-radius: 10px;
 }
 
 .projects-grid::-webkit-scrollbar-thumb:hover {
-    background: #4cae4c;
+    background: #00e0c8;
 }
 
 .projects-grid {
