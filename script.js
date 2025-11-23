@@ -149,7 +149,7 @@ const projectDetails = {
                 <p><strong>문제 해결 방법:</strong> Unity NavMeshAgent와 Mouse Raycast를 결합하여 이동 로직을 설계하고, Reticle UI를 통해 피드백을 제공했습니다. </p>
                 <p><strong>해결 과정:</strong> 마우스 클릭 시 Mouse Raycast를 바닥에 쏘아 목표 지점의 3D 좌표를 획득합니다. NavMeshAgent 컴포넌트의 SetDestination() 함수를 사용하여 캐릭터를 해당 좌표로 이동시키며, 이동 중에는 애니메이션 컨트롤러를 통해 MoveState로 전환하고 목표 지점에 Reticle UI를 표시합니다.</p>
             </div>
-            <img src="https://raw.githubusercontent.com/Jinniepoo/Unity3D_Undervein/main/Packages/GitImages/ClickUI.gif" alt="탑다운 마우스 Raycast 기반 캐릭터 이동 GIF" />
+            <img src="https://raw.githubusercontent.com/Jinniepoo/Unity3D_Undervein/main/Packages/GitImages/ClickUI.gif" alt="탑다운 마우스 Raycast 기반 캐릭터 이동 GIF"  width="100"/>
         </div>
     </div>
     
