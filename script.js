@@ -158,7 +158,7 @@ const projectDetails = {
         <div class="modal-feature-row reverse">
             <div class="text-content">
                 <h4>재사용 가능한 FSM 기반의 플레이어/몬스터 AI 및 전투 로직</h4>
-                <p><strong>문제 정의:</strong> 플레이어와 몬스터가 '대기', '이동', '공격', '사망' 등의 상태를 유기적으로 전환하며 복잡한 전투 및 순찰 행동을 수행해야 했습니다.</p>
+                <p><strong>문제 정의:</strong> 플레이어와 몬스터가 대기/이동/공격/사망 등의 상태를 유기적으로 전환하며 복잡한 전투 및 순찰 행동을 수행해야 했습니다.</p>
                 <p><strong>문제 해결 방법:</strong> FSM 패턴을 핵심 구조로 채택하여 상태별 로직을 분리하고, NavMeshAgent를 활용하여 몬스터의 순찰/추적 경로를 구현했습니다.</p>
                 <p><strong>해결 과정:</strong> IdleState, MoveState, AttackState, DeadState 등 상태 클래스를 정의하여 공통 로직을 관리했습니다. 몬스터는 Waypoint를 따라 순찰하다가, 시야 범위(Detection Range) 내에 플레이어가 감지되면 추적으로 전환합니다. 공격 거리에 도달하면 AttackState로 전환하여 거리 기반 공격을 수행하고 이펙트를 연동했습니다.</p>
             </div>
