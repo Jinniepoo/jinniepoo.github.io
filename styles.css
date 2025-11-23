@@ -292,6 +292,10 @@ section:nth-child(even) {
     cursor: pointer;
 }
 
+.projects-grid .project-card:last-child {
+    margin-right: 0;
+}
+
 .project-card:hover {
     transform: translateY(-5px);
     border-color: var(--accent-color); 
@@ -393,6 +397,64 @@ section:nth-child(even) {
 .project-links .btn {
     flex: 1;
     text-align: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; 
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    width: 90%; 
+    max-width: 800px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    position: relative;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 38px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 24px;
+    padding-left: 10px;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0} 
+    to {top: 0; opacity: 1}
+}
+
+.project-details-hidden {
+    display: none;
+}
+
+#modal-details-content h3 {
+    color: #333;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+#modal-details-content ul {
+    list-style-type: disc;
+    padding-left: 25px;
+    line-height: 1.6;
+}
+
+#modal-details-content .tech-stack {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #5cb85c;
 }
 
 .skills {
