@@ -239,7 +239,7 @@ const projectDetails = {
             
             <div class="modal-feature-section">
                 <h3>2. 블록 생성 및 관리 로직</h3>
-                <div class="modal-feature-row-reverse">
+                <div class="modal-feature-row reverse">
                     <div class="text-content">
                         <h4>ShapeStorage를 활용한 효율적인 3개 블록 세트 관리 및 막혔을 때의 리셋 시스템</h4>
                         <p><strong>문제 정의:</strong> 플레이어에게 항상 3개의 블록 세트를 제공하고, 이 세트 내 모든 블록이 배치 불가능할 때 게임 오버 대신 새로운 블록을 요청할 수 있는 기능(리셋 시스템)이 필요했습니다.</p>
@@ -263,7 +263,7 @@ const projectDetails = {
 
             <div class="modal-feature-section">
                 <h3>4. 최고 점수 기록 및 데이터 저장</h3>
-                <div class="modal-feature-row-reverse">
+                <div class="modal-feature-row reverse">
                     <div class="text-content">
                         <h4>Unity PlayerPrefs와 Binary Serialization을 조합한 안전하고 영구적인 최고 점수 데이터 Persistence</h4>
                         <p><strong>문제 정의:</strong> 사용자의 최고 점수를 로컬 환경에 영구적으로 저장하고 불러와야 하며, 데이터의 안정성을 확보해야 했습니다.</p>
