@@ -285,7 +285,7 @@ section:nth-child(even) {
 }
 
 .projects-grid::-webkit-scrollbar-thumb:hover {
-    background: #00e0c8;
+    background: #ffffff;
 }
 
 .projects-grid {
