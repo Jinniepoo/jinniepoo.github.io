@@ -218,8 +218,8 @@ const projectDetails = {
         links: [
             { text: "GitHub", url: "https://github.com/Jinniepoo/PastelBlocks", primary: true }
         ],
-        bannerImage: "https://raw.githubusercontent.com/Jinniepoo/PastelBlocks/main/Imgs/PastelBlocks_Intro.jpeg",
-        bannerImage: "https://raw.githubusercontent.com/Jinniepoo/PastelBlocks/main/Imgs/PastelBlocks_GamePlay.jpeg",
+        bannerImage: "https://raw.githubusercontent.com/Jinniepoo/PastelBlocks/main/Imgs/PastelBlocks_Intro.png",
+        bannerImage: "https://raw.githubusercontent.com/Jinniepoo/PastelBlocks/main/Imgs/PastelBlocks_GamePlay.png",
         richContent: `
         <div class="modal-rich-details">
 
