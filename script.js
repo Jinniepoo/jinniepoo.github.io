@@ -279,20 +279,71 @@ function openModal(projectId) {
         return;
     }
 
-    let featuresHtml = project.features.map(f => `<li>${f}</li>`).join('');
     let techHtml = project.tech.map(t => `<span class="tech-tag">${t}</span>`).join('');
     let linksHtml = project.links.map(link => {
         const btnClass = link.primary ? 'btn-primary' : 'btn-secondary';
         return `<a href="${link.url}" class="btn ${btnClass}" target="_blank">${link.text}</a>`;
     }).join('');
+    
+    let mainContent;
+    let titleContent;
+    
+    if (projectId === 'PastelBlocks') {
+        
+        titleContent = `
+            <h1 style="font-size: 2.2rem; margin-bottom: 5px; color: white;">${project.title} <span style="font-size: 1rem; color: var(--text-color-darker); font-weight: 400;">(${project.subtitle})</span></h1>
+        `;
+        
+        const featuresHtml = project.features.map(f => `<li>${f}</li>`).join('');
+        
+        mainContent = `
+            <div class="pastel-summary-container">
+                <div class="pastel-summary-left">
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 10px; color: var(--text-color);">
+                        ${project.description}
+                    </p>
+                </div>
+                <div class="pastel-summary-right">
+                    <h4>주요 기능 및 기여</h4>
+                    <ul>${featuresHtml}</ul>
+                </div>
+            </div>
+            
+            <hr style="border-top: 1px solid var(--border-color); margin: 30px 0;">
+
+            ${project.richContent}
+        `;
+    
+    } else if (project.richContent) {
+        
+        titleContent = `
+            <h2>${project.title}</h2>
+            <p class="project-subtitle" style="margin-bottom: 20px;">${project.subtitle}</p>
+            <p style="line-height: 1.7; margin-bottom: 30px;">${project.description}</p>
+        `;
+        
+        mainContent = project.richContent;
+
+    } else {
+        
+        let featuresHtml = project.features.map(f => `<li>${f}</li>`).join('');
+        
+        titleContent = `
+            <h2>${project.title}</h2>
+            <p class="project-subtitle" style="margin-bottom: 20px;">${project.subtitle}</p>
+            <p style="line-height: 1.7; margin-bottom: 30px;">${project.description}</p>
+        `;
+        
+        mainContent = `
+            <h3 class="modal-feature-title">주요 기능 및 기여</h3>
+            <ul>${featuresHtml}</ul>
+        `;
+    }
 
     content.innerHTML = `
-        <h2>${project.title}</h2>
-        <p class="project-subtitle" style="margin-bottom: 20px;">${project.subtitle}</p>
-        <p style="line-height: 1.7; margin-bottom: 30px;">${project.description}</p>
+        ${titleContent}
         
-        <h3 class="modal-feature-title">주요 기능 및 기여</h3>
-        <ul>${featuresHtml}</ul>
+        ${mainContent}
 
         <h3 class="modal-tech-title" style="margin-top: 20px;">기술 스택</h3>
         <div class="project-tech">${techHtml}</div>
