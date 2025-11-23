@@ -215,11 +215,12 @@ const projectDetails = {
             "최고 점수 기록 및 Unity PlayerPrefs를 이용한 데이터 저장",
             "연속 블록 제거에 따른 보너스 점수 시스템"
         ],
-        links: [
-            { text: "GitHub", url: "https://github.com/Jinniepoo/PastelBlocks", primary: true }
-        ],
+        
         bannerImage: "https://raw.githubusercontent.com/Jinniepoo/PastelBlocks/main/Imgs/PastelBlocks_Intro.png",
         bannerImage: "https://raw.githubusercontent.com/Jinniepoo/PastelBlocks/main/Imgs/PastelBlocks_GamePlay.png",
+       links: [
+            { text: "GitHub", url: "https://github.com/Jinniepoo/PastelBlocks", primary: true }
+        ],
         richContent: `
         <div class="modal-rich-details">
 
