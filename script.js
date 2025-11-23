@@ -218,6 +218,7 @@ const projectDetails = {
         links: [
             { text: "GitHub", url: "https://github.com/Jinniepoo/PastelBlocks", primary: true }
         ],
+        bannerImage: "https://raw.githubusercontent.com/Jinniepoo/PastelBlocks/main/Imgs/Horizontal.gif",
         richContent: `
         <div class="modal-rich-details">
 
@@ -230,7 +231,8 @@ const projectDetails = {
                         <p><strong>문제 해결 방법:</strong> Grid Data Array를 통해 그리드 상태를 관리하고, 블록의 모양을 정의하는 Shape Data와 대조하는 CanPlaceShape 로직을 핵심으로 구현했습니다.</p>
                         <p><strong>해결 과정:</strong> 2차원 배열로 그리드 상태를 관리하고, 블록 드래그 시 마우스 위치와 블록 모양 배열을 대조하여 배치 가능 여부를 실시간으로 판단합니다. 마우스 오버 시 미리보기(Hover Block)를 제공하여 UX를 개선했습니다.</p>
                     </div>
-                    <img src="https://raw.githubusercontent.com/Jinniepoo/PastelBlocks/main/Imgs/Horizontal.gif" alt="Horizontal 블록 완성 GIF" />
+                    <img src="https://raw.githubusercontent.com/Jinniepoo/PastelBlocks/main/Imgs/PastelBlocks_Intro.png" alt="Horizontal 블록 완성 GIF" />
+                    <img src="https://raw.githubusercontent.com/Jinniepoo/PastelBlocks/main/Imgs/PastelBlocks_GamePlay.png" alt="Horizontal 블록 완성 GIF" />
                 </div>
             </div>
             
@@ -283,7 +285,6 @@ function openModal(projectId) {
         return;
     }
 
-    let techHtml = project.tech.map(t => `<span class="tech-tag">${t}</span>`).join('');
     let linksHtml = project.links.map(link => {
         const btnClass = link.primary ? 'btn-primary' : 'btn-secondary';
         return `<a href="${link.url}" class="btn ${btnClass}" target="_blank">${link.text}</a>`;
@@ -292,7 +293,7 @@ function openModal(projectId) {
     let mainContent;
     let titleContent;
     
-    if (projectId === 'PastelBlocks') {
+    if (project.richContent) {
         
         titleContent = `
             <h1 style="font-size: 2.2rem; margin-bottom: 5px; color: white;">${project.title} <span style="font-size: 1rem; color: var(--text-color-darker); font-weight: 400;">(${project.subtitle})</span></h1>
@@ -317,17 +318,6 @@ function openModal(projectId) {
 
             ${project.richContent}
         `;
-    
-    } else if (project.richContent) {
-        
-        titleContent = `
-            <h2>${project.title}</h2>
-            <p class="project-subtitle" style="margin-bottom: 20px;">${project.subtitle}</p>
-            <p style="line-height: 1.7; margin-bottom: 30px;">${project.description}</p>
-        `;
-        
-        mainContent = project.richContent;
-
     } else {
         
         let featuresHtml = project.features.map(f => `<li>${f}</li>`).join('');
@@ -344,13 +334,10 @@ function openModal(projectId) {
         `;
     }
 
-    content.innerHTML = `
+  content.innerHTML = `
         ${titleContent}
         
         ${mainContent}
-
-        <h3 class="modal-tech-title" style="margin-top: 20px;">기술 스택</h3>
-        <div class="project-tech">${techHtml}</div>
         
         <div class="project-links" style="margin-top: 30px; border-top: 1px solid var(--border-color); padding-top: 20px;">
             ${linksHtml}
