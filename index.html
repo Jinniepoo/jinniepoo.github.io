@@ -92,7 +92,7 @@
             <h2 class="section-title">프로젝트</h2>
             <div class="projects-grid">
                 
-                <div class="project-card">
+                <div class="project-card" onclick="openModal('NSLT')">
                     <div class="project-header">
                         <div class="project-icon">🎮</div>
                         <div class="project-title-section">
@@ -123,7 +123,7 @@
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" onclick="openModal('NMH3')">
                     <div class="project-header">
                         <div class="project-icon">👾</div>
                         <div class="project-title-section">
@@ -153,7 +153,7 @@
                     </div>
                 </div>
                 
-                <div class="project-card">
+                <div class="project-card" onclick="openModal('Undervein')">
                     <div class="project-header">
                         <div class="project-icon">🕹️</div>
                         <div class="project-title-section">
@@ -185,7 +185,7 @@
                         <a href="https://github.com/Jinniepoo/Unity3D_Undervein" class="btn btn-secondary" target="_blank">GitHub</a>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" onclick="openModal('PastelBlocks')">
                     <div class="project-header">
                         <div class="project-icon">🧩</div>
                         <div class="project-title-section">
@@ -333,6 +333,16 @@
         </div>
     </section>
 
+    
+<div id="projectModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button" onclick="closeModal()">&times;</span>
+        <div id="modal-details-content">
+            </div>
+    </div>
+</div>
+<footer class="footer">
+    
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
