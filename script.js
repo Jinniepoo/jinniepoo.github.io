@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     
     const navToggle = document.querySelector('.nav-toggle');
@@ -102,7 +103,7 @@ const projectDetails = {
         links: [
             { text: "GitHub", url: "https://github.com/Jinniepoo/D3D11_NSLT3D", primary: false }
         ],
-        bannerImage: ["https://raw.githubusercontent.com/Jinniepoo/D3D11_NSLT3D/main/GitImages/Player_MonsterAtt.gif"], 
+         bannerImage: ["https://raw.githubusercontent.com/Jinniepoo/Unity3D_Undervein/Packages/GitImages/Undervein.png"],
     },
 /* NMH3 */
     'NMH3': {
@@ -119,7 +120,7 @@ const projectDetails = {
         links: [
             { text: "YouTube", url: "https://www.youtube.com/watch?v=lGg6B_-HBl8", primary: true }
         ],
-        bannerImage: ["https://img.youtube.com/vi/lGg6B_-HBl8/maxresdefault.jpg"],
+         bannerImage: ["https://raw.githubusercontent.com/Jinniepoo/Unity3D_Undervein/Packages/GitImages/Undervein.png"],
     },
 /* UNDERVEIN */
   'Undervein': {
@@ -136,7 +137,7 @@ const projectDetails = {
         links: [
             { text: "GitHub", url: "https://github.com/Jinniepoo/Unity3D_Undervein", primary: false }
         ],
-        bannerImage: ["https://raw.githubusercontent.com/Jinniepoo/Unity3D_Undervein/main/Packages/GitImages/ClickUI.gif"], 
+        bannerImage: ["https://raw.githubusercontent.com/Jinniepoo/Unity3D_Undervein/Packages/GitImages/Undervein.png"],
         richContent: `<div class="modal-rich-details">
 
     <div class="modal-feature-section">
@@ -217,12 +218,12 @@ const projectDetails = {
             "최고 점수 기록 및 Unity PlayerPrefs를 이용한 데이터 저장",
             "연속 블록 제거에 따른 보너스 점수 시스템"
         ],
-        links: [
-            { text: "GitHub", url: "https://github.com/Jinniepoo/PastelBlocks", primary: true }
+        
+        bannerImage: [ "https://raw.githubusercontent.com/Jinniepoo/PastelBlocks/main/Imgs/PastelBlocks_Intro.png",
+                     "https://raw.githubusercontent.com/Jinniepoo/PastelBlocks/main/Imgs/PastelBlocks_GamePlay.png"
         ],
-        bannerImage: [ 
-            "https://raw.githubusercontent.com/Jinniepoo/PastelBlocks/main/Imgs/PastelBlocks_Intro.png",
-            "https://raw.githubusercontent.com/Jinniepoo/PastelBlocks/main/Imgs/PastelBlocks_GamePlay.png"
+       links: [
+            { text: "GitHub", url: "https://github.com/Jinniepoo/PastelBlocks", primary: true }
         ],
         richContent: `
         <div class="modal-rich-details">
@@ -270,7 +271,7 @@ const projectDetails = {
                     <div class="text-content">
                         <h4>Unity PlayerPrefs와 Binary Serialization을 조합한 안전하고 영구적인 최고 점수 데이터 Persistence</h4>
                         <p><strong>문제 정의:</strong> 사용자의 최고 점수를 로컬 환경에 영구적으로 저장하고 불러와야 하며, 데이터의 안정성을 확보해야 했습니다.</p>
-                        <p><strong>문제 해결 방법:</strong> 간단한 데이터 저장은 Unity PlayerPrefs를 사용하고, 중요 데이터인 최고 점수는 Binary Serialization을 조합하여 데이터 지속성(Persistence)을 구현했습니다。</p>
+                        <p><strong>문제 해결 방법:</strong> 간단한 데이터 저장은 Unity PlayerPrefs를 사용하고, 중요 데이터인 최고 점수는 Binary Serialization을 조합하여 데이터 지속성(Persistence)을 구현했습니다.</p>
                         <p><strong>해결 과정:</strong> BinaryData 유틸리티 클래스를 통해 최고 점수 데이터를 바이너리 파일로 직렬화하여 영구 저장합니다. 게임 시작 시 파일을 로드하고, 게임 중 실시간 점수를 PlayerPrefs에 임시 저장 후 최고 점수 갱신 시 바이너리 파일에 최종 저장하여 데이터 변조 위험을 낮추었습니다.</p>
                 </div>
                 <img src="https://raw.githubusercontent.com/Jinniepoo/PastelBlocks/main/Imgs/GameOver.gif" alt="GameOver GIF" />
@@ -294,57 +295,58 @@ function openModal(projectId) {
         return `<a href="${link.url}" class="btn ${btnClass}" target="_blank">${link.text}</a>`;
     }).join('');
     
-    let imageContent = project.bannerImage.map(src => {
-        return `<img src="${src}" alt="${project.title} 이미지" class="project-summary-image">`;
-    }).join('');
+    let mainContent;
+    let titleContent;
     
-    let rightColumnHtml = `
-        <div class="project-image-column ${project.bannerImage.length > 1 ? 'pastel-images' : 'single-image'}">
-            <div class="image-wrapper">
-                ${imageContent}
-            </div>
-            <div class="project-links project-links-inline">
-                ${linksHtml}
-            </div>
-        </div>
-    `;
-
-    const featuresHtml = project.features.map(f => `<li>${f}</li>`).join('');
-    let leftColumnHtml = `
-        <div class="project-text-column">
-            <h1 style="font-size: 2.2rem; margin-bottom: 5px; color: white;">${project.title} <span style="font-size: 1rem; color: var(--text-color-darker); font-weight: 400;">(${project.subtitle})</span></h1>
-            
-            <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 10px; color: var(--text-color); margin-bottom: 20px;">
-                ${project.description}
-            </p>
-            <hr style="border-top: 1px solid var(--border-color); margin: 20px 0;">
-            
-            <div class="features-list-wrapper">
-                <h4>주요 기능 및 기여</h4>
-                <ul>${featuresHtml}</ul>
-            </div>
-        </div>
-    `;
-    
-    let mainSummaryHtml = `
-        <div class="new-modal-layout">
-            ${leftColumnHtml}
-            ${rightColumnHtml}
-        </div>
-    `;
-
-    let richDetailsHtml = '';
     if (project.richContent) {
-        richDetailsHtml = `
+        
+        titleContent = `
+            <h1 style="font-size: 2.2rem; margin-bottom: 5px; color: white;">${project.title} <span style="font-size: 1rem; color: var(--text-color-darker); font-weight: 400;">(${project.subtitle})</span></h1>
+        `;
+        
+        const featuresHtml = project.features.map(f => `<li>${f}</li>`).join('');
+        
+        mainContent = `
+            <div class="pastel-summary-container">
+                <div class="pastel-summary-left">
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 10px; color: var(--text-color);">
+                        ${project.description}
+                    </p>
+                </div>
+                <div class="pastel-summary-right">
+                    <h4>주요 기능 및 기여</h4>
+                    <ul>${featuresHtml}</ul>
+                </div>
+            </div>
+            
             <hr style="border-top: 1px solid var(--border-color); margin: 30px 0;">
-            <h3 style="font-size: 1.8rem; color: white; margin-bottom: 20px;">세부 구현 내용</h3>
+
             ${project.richContent}
+        `;
+    } else {
+        
+        let featuresHtml = project.features.map(f => `<li>${f}</li>`).join('');
+        
+        titleContent = `
+            <h2>${project.title}</h2>
+            <p class="project-subtitle" style="margin-bottom: 20px;">${project.subtitle}</p>
+            <p style="line-height: 1.7; margin-bottom: 30px;">${project.description}</p>
+        `;
+        
+        mainContent = `
+            <h3 class="modal-feature-title">주요 기능 및 기여</h3>
+            <ul>${featuresHtml}</ul>
         `;
     }
 
-    content.innerHTML = `
-        ${mainSummaryHtml}
-        ${richDetailsHtml}
+  content.innerHTML = `
+        ${titleContent}
+        
+        ${mainContent}
+        
+        <div class="project-links" style="margin-top: 30px; border-top: 1px solid var(--border-color); padding-top: 20px;">
+            ${linksHtml}
+        </div>
     `;
     
     modal.style.display = 'block';
