@@ -373,39 +373,28 @@ function openModal(projectId) {
         return `<a href="${link.url}" class="btn ${btnClass}" target="_blank">${link.text}</a>`;
     }).join('');
 
-    let summaryImageHtml = '';
-    let rightImageCount = project.bannerImage.length;
-    let rightImageHtml = '';
+    const featuresHtml = project.features.map(f => `<li>${f}</li>`).join('');
 
-    if (rightImageCount === 1) {
-        summaryImageHtml = `
-            <div class="left-column-image-wrapper">
-                <img src="${project.bannerImage[0]}" 
-                     alt="${project.title} 대표 이미지" 
-                     class="project-summary-image single-left-image">
-            </div>`;
-        rightImageCount = 0;
-    } else if (rightImageCount > 1) {
-        rightImageHtml = project.bannerImage.map(src => {
-            return `<img src="${src}" alt="${project.title} 이미지" class="project-summary-image">`;
+    let mediaHtml = ''; 
+    const bannerImages = project.bannerImage || [];
+    const imageCount = bannerImages.length;
+    
+    if (imageCount > 0) {
+        const imageElements = bannerImages.map(src => {
+            const isSingleLandscape = imageCount === 1;
+            return `<img src="${src}" alt="${project.title} 이미지" class="project-summary-image ${isSingleLandscape ? 'single-landscape-image' : 'multi-portrait-image'}">`;
         }).join('');
-    }
-
-    let rightColumnHtml = '';
-    if (rightImageCount > 0) {
-        rightColumnHtml = `
-            <div class="project-image-column ${rightImageCount > 1 ? 'pastel-images' : 'single-image'}">
+        
+        mediaHtml = `
+            <div class="project-media-column ${imageCount > 1 ? 'pastel-media-column' : 'single-media-column'}">
                 <div class="image-wrapper">
-                    ${rightImageHtml}
+                    ${imageElements}
                 </div>
             </div>
         `;
     }
-
-    const featuresHtml = project.features.map(f => `<li>${f}</li>`).join('');
-
-    let leftColumnHtml = `
-        <div class="project-left-column">
+    const textContentHtml = `
+        <div class="project-text-column">
             <h1 style="font-size: 2.2rem; margin-bottom: 5px; color: white;">
                 ${project.title}<br>
                 <span style="font-size: 1rem; color: var(--text-color-darker); font-weight: 400;">
@@ -413,17 +402,11 @@ function openModal(projectId) {
                 </span>
             </h1>
 
-            ${summaryImageHtml}
-
             <div class="project-links" style="margin-top: 20px;">
                 ${linksHtml}
             </div>
-        </div>
-    `;
-
-    let rightTextColumnHtml = `
-        <div class="project-right-column">
-            <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 10px; color: var(--text-color); margin-bottom: 20px;">
+            
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 30px; color: var(--text-color); margin-bottom: 20px;">
                 ${project.description}
             </p>
 
@@ -433,10 +416,9 @@ function openModal(projectId) {
     `;
 
     let mainSummaryHtml = `
-        <div class="new-modal-layout">
-            ${leftColumnHtml}
-            ${rightTextColumnHtml}
-            ${rightColumnHtml}
+        <div class="new-modal-layout text-and-media-layout">
+            ${textContentHtml}
+            ${mediaHtml}
         </div>
     `;
 
