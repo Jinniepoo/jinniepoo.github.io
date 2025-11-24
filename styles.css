@@ -559,9 +559,11 @@ section:nth-child(even) {
 }
 
 .left-column-image-wrapper {
-    margin: 15px 0 25px 0; 
-    max-width: 800px;
-    display: block;
+    margin: 15px 0 25px 0;
+    max-width: 800px; 
+    display: flex;
+    flex-direction: row; 
+    gap: 10px; 
 }
 
 .project-summary-image.single-left-image {
@@ -576,43 +578,6 @@ section:nth-child(even) {
     color: white;
     font-size: 1.5rem;
     margin-bottom: 15px;
-}
-
-
-.pastel-summary-container {
-    display: flex;
-    gap: 30px;
-    margin-bottom: 40px;
-}
-.pastel-summary-left {
-    flex: 1.5; 
-}
-.pastel-summary-right {
-    flex: 1;
-    border-left: 2px solid var(--accent-color);
-    padding-left: 30px;
-}
-.pastel-summary-right h4 {
-    color: white;
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-.pastel-summary-right ul {
-    list-style: none;
-    padding: 0;
-}
-.pastel-summary-right ul li {
-    margin-bottom: 8px;
-    position: relative;
-    padding-left: 15px;
-    font-size: 1.05rem;
-}
-.pastel-summary-right ul li::before {
-    content: '-';
-    position: absolute;
-    left: 0;
-    color: var(--accent-color);
-    font-weight: bold;
 }
 
 .skills {
