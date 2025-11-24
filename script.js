@@ -101,7 +101,7 @@ const projectDetails = {
          links: [
              { text: "GitHub", url: "https://github.com/Jinniepoo/D3D11_NSLT3D", primary: false }
          ],
-         bannerImage: ["https://cdn1.epicgames.com/d328d6aaf794eb4821bab4c5ba08a0a/offer/EGS_NewSuperLuckysTale_PlayfulStudios_S5-1920x1080-87e8ef98b49a1fe926a9d83639de0a3a.jpg"],
+         bannerImage: ["https://cdn1.epicgames.com/d3288d6aaf794eb4821bab4c5ba08a0a/offer/EGS_NewSuperLuckysTale_PlayfulStudios_S5-1920x1080-87e8ef98b49a1fe926a9d83639de0a3a.jpg"],
          richContent: `<div class="modal-rich-details">
 
         <div class="modal-feature-section">
@@ -215,7 +215,7 @@ const projectDetails = {
         links: [
             { text: "GitHub", url: "https://github.com/Jinniepoo/Unity3D_Undervein", primary: false }
         ],
-        bannerImage: ["https://raw.githubusercontent.com/Jinniepoo/Unity3D_Undervein/main/Packages/GitImages/ClickUI.gif"],
+        bannerImage: ["https://raw.githubusercontent.com/Jinniepoo/Unity3D_Undervein/main/Packages/GitImages/Undervein.png"],
         richContent: `<div class="modal-rich-details">
 
     <div class="modal-feature-section">
