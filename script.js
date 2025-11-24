@@ -349,7 +349,7 @@ const projectDetails = {
                     <div class="text-content">
                         <h4>Unity PlayerPrefs와 Binary Serialization을 조합한 안전하고 영구적인 최고 점수 데이터 Persistence</h4>
                         <p><strong>문제 정의:</strong> 사용자의 최고 점수를 로컬 환경에 영구적으로 저장하고 불러와야 하며, 데이터의 안정성을 확보해야 했습니다.</p>
-                        <p><strong>문제 해결 방법:</strong> 간단한 데이터 저장은 Unity PlayerPrefs를 사용하고, 중요 데이터인 최고 점수는 Binary Serialization을 조합하여 데이터 지속성(Persistence)을 구현했습니다。</p>
+                        <p><strong>문제 해결 방법:</strong> 간단한 데이터 저장은 Unity PlayerPrefs를 사용하고, 중요 데이터인 최고 점수는 Binary Serialization을 조합하여 데이터 지속성(Persistence)을 구현했습니다.</p>
                         <p><strong>해결 과정:</strong> BinaryData 유틸리티 클래스를 통해 최고 점수 데이터를 바이너리 파일로 직렬화하여 영구 저장합니다. 게임 시작 시 파일을 로드하고, 게임 중 실시간 점수를 PlayerPrefs에 임시 저장 후 최고 점수 갱신 시 바이너리 파일에 최종 저장하여 데이터 변조 위험을 낮추었습니다.</p>
                 </div>
                 <img src="https://raw.githubusercontent.com/Jinniepoo/PastelBlocks/main/Imgs/GameOver.gif" alt="GameOver GIF" />
@@ -373,28 +373,39 @@ function openModal(projectId) {
         return `<a href="${link.url}" class="btn ${btnClass}" target="_blank">${link.text}</a>`;
     }).join('');
 
-    const featuresHtml = project.features.map(f => `<li>${f}</li>`).join('');
+    let summaryImageHtml = '';
+    let rightImageCount = project.bannerImage.length;
+    let rightImageHtml = '';
 
-    let mediaHtml = ''; 
-    const bannerImages = project.bannerImage || [];
-    const imageCount = bannerImages.length;
-    
-    if (imageCount > 0) {
-        const imageElements = bannerImages.map(src => {
-            const isSingleLandscape = imageCount === 1;
-            return `<img src="${src}" alt="${project.title} 이미지" class="project-summary-image ${isSingleLandscape ? 'single-landscape-image' : 'multi-portrait-image'}">`;
+    if (rightImageCount === 1) {
+        summaryImageHtml = `
+            <div class="left-column-image-wrapper">
+                <img src="${project.bannerImage[0]}" 
+                     alt="${project.title} 대표 이미지" 
+                     class="project-summary-image single-left-image">
+            </div>`;
+        rightImageCount = 0;
+    } else if (rightImageCount > 1) {
+        rightImageHtml = project.bannerImage.map(src => {
+            return `<img src="${src}" alt="${project.title} 이미지" class="project-summary-image">`;
         }).join('');
-        
-        mediaHtml = `
-            <div class="project-media-column ${imageCount > 1 ? 'pastel-media-column' : 'single-media-column'}">
+    }
+
+    let rightColumnHtml = '';
+    if (rightImageCount > 0) {
+        rightColumnHtml = `
+            <div class="project-image-column ${rightImageCount > 1 ? 'pastel-images' : 'single-image'}">
                 <div class="image-wrapper">
-                    ${imageElements}
+                    ${rightImageHtml}
                 </div>
             </div>
         `;
     }
-    const textContentHtml = `
-        <div class="project-text-column">
+
+    const featuresHtml = project.features.map(f => `<li>${f}</li>`).join('');
+
+    let leftColumnHtml = `
+        <div class="project-left-column">
             <h1 style="font-size: 2.2rem; margin-bottom: 5px; color: white;">
                 ${project.title}<br>
                 <span style="font-size: 1rem; color: var(--text-color-darker); font-weight: 400;">
@@ -402,11 +413,17 @@ function openModal(projectId) {
                 </span>
             </h1>
 
+            ${summaryImageHtml}
+
             <div class="project-links" style="margin-top: 20px;">
                 ${linksHtml}
             </div>
-            
-            <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 30px; color: var(--text-color); margin-bottom: 20px;">
+        </div>
+    `;
+
+    let rightTextColumnHtml = `
+        <div class="project-right-column">
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 10px; color: var(--text-color); margin-bottom: 20px;">
                 ${project.description}
             </p>
 
@@ -416,9 +433,10 @@ function openModal(projectId) {
     `;
 
     let mainSummaryHtml = `
-        <div class="new-modal-layout text-and-media-layout">
-            ${textContentHtml}
-            ${mediaHtml}
+        <div class="new-modal-layout">
+            ${leftColumnHtml}
+            ${rightTextColumnHtml}
+            ${rightColumnHtml}
         </div>
     `;
 
@@ -454,3 +472,5 @@ window.addEventListener('click', (event) => {
         closeModal();
     }
 });
+
+}
