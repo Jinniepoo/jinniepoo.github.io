@@ -407,13 +407,30 @@ function openModal(projectId) {
     `;
 
     let mainSummaryHtml = `
-        <div class="new-modal-layout">
-            <div class="project-left-column">
-                ${summaryImageHtml}
-            </div>
-            ${rightTextColumnHtml}
+    <div class="new-modal-layout">
+        <div class="project-left-column">
+            ${summaryImageHtml}
         </div>
-    `;
+
+        <div class="vertical-divider"></div> <!-- 세로선 추가 -->
+
+        <div class="project-right-column">
+            <h1 style="font-size: 2.2rem; margin-bottom: 5px; color: white;">
+                ${project.title}<br>
+                <span style="font-size: 1rem; color: var(--text-color-darker); font-weight: 400;">
+                    (${project.subtitle})
+                </span>
+            </h1>
+
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 10px; color: var(--text-color); margin-bottom: 20px;">
+                ${project.description}
+            </p>
+
+            <h4>주요 기능 및 기여</h4>
+            <ul>${featuresHtml}</ul>
+        </div>
+    </div>
+`;
 
     let richDetailsHtml = '';
     if (project.richContent) {
