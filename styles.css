@@ -560,12 +560,12 @@ section:nth-child(even) {
 
 .left-column-image-wrapper {
     margin: 15px 0 25px 0; 
-    max-width: 100%;
+    max-width: 400px;
     display: block;
 }
 
 .project-summary-image.single-left-image {
-    max-height: 400px; 
+    max-height: 200px; 
     width: 100%;
     object-fit: contain;
     border-radius: 8px;
