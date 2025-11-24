@@ -426,7 +426,6 @@ function openModal(projectId) {
     if (project.richContent) {
         richDetailsHtml = `
             <hr style="border-top: 1px solid var(--border-color); margin: 30px 0;">
-            <h3 style="font-size: 1.8rem; color: white; margin-bottom: 20px;">세부 구현 내용</h3>
             ${project.richContent}
         `;
     }
