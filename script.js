@@ -373,43 +373,46 @@ function openModal(projectId) {
         return `<a href="${link.url}" class="btn ${btnClass}" target="_blank">${link.text}</a>`;
     }).join('');
     
-    const imageCount = project.bannerImage ? project.bannerImage.length : 0;
+    let summaryImageHtml = '';
+    let rightImageCount = project.bannerImage.length;
     let rightImageHtml = '';
-    let rightColumnHtml = '';
-
-    if (imageCount > 0) {
+    
+    if (rightImageCount === 1) {
+        summaryImageHtml = `<div class="left-column-image-wrapper"><img src="${project.bannerImage[0]}" alt="${project.title} 대표 이미지" class="project-summary-image single-left-image"></div>`;
+        rightImageCount = 0; 
+    } else if (rightImageCount > 1) {
         rightImageHtml = project.bannerImage.map(src => {
-            return `<img src="${src}" alt="${project.title} 대표 이미지" class="project-summary-image">`;
+            return `<img src="${src}" alt="${project.title} 이미지" class="project-summary-image">`;
         }).join('');
-        
+    }
+
+    let rightColumnHtml = '';
+    if (rightImageCount > 0) {
         rightColumnHtml = `
-            <div class="project-image-column ${imageCount > 1 ? 'pastel-images' : 'single-image-right'}">
+            <div class="project-image-column ${rightImageCount > 1 ? 'pastel-images' : 'single-image'}">
                 <div class="image-wrapper">
                     ${rightImageHtml}
                 </div>
-                <div class="project-links project-links-inline">
-                    ${linksHtml}
                 </div>
             </div>
         `;
-        linksHtml = ''; 
-    
+    }
+
     const featuresHtml = project.features.map(f => `<li>${f}</li>`).join('');
-    
+
     let leftColumnHtml = `
         <div class="project-text-column">
             <h1 style="font-size: 2.2rem; margin-bottom: 5px; color: white;">${project.title} <span style="font-size: 1rem; color: var(--text-color-darker); font-weight: 400;">(${project.subtitle})</span></h1>
             
+            ${summaryImageHtml}
+            
             <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 10px; color: var(--text-color); margin-bottom: 20px;">
                 ${project.description}
             </p>
-            <hr style="border-top: 1px solid var(--border-color); margin: 20px 0;">
-            
-            <div class="features-list-wrapper">
                 <h4>주요 기능 및 기여</h4>
                 <ul>${featuresHtml}</ul>
             </div>
-            ${(imageCount === 0) ? `<div class="project-links project-links-inline" style="margin-top: 20px; width: 100%;">${linksHtml}</div>` : ''} 
+            ${(rightImageCount === 0) ? `<div class="project-links project-links-inline" style="margin-top: 20px; width: 50%;">${linksHtml}</div>` : ''} 
         </div>
     `;
     
