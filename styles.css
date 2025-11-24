@@ -350,6 +350,15 @@ section:nth-child(even) {
     border-color: var(--accent-color); 
 }
 
+.project-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    background-color: var(--border-color);
+    color: #ffffff;
+}
+
 .project-header {
     display: flex;
     align-items: flex-start;
