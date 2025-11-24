@@ -472,5 +472,3 @@ window.addEventListener('click', (event) => {
         closeModal();
     }
 });
-
-}
