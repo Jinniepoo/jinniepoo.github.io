@@ -432,6 +432,11 @@ function openModal(projectId) {
     document.body.style.overflow = 'hidden';
 }
 
+function closeModal() {
+    const modal = document.getElementById('projectModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto'; 
+}
 
 window.openModal = openModal;
 window.closeModal = closeModal;
