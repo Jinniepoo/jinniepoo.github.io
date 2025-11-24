@@ -548,10 +548,32 @@ section:nth-child(even) {
 
 .new-modal-layout {
     display: flex;
-    gap: 40px;
-    align-items: flex-start; 
-    margin-bottom: 30px;
+    align-items: flex-start;
+    gap: 20px; 
 }
+
+.project-left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px; 
+}
+
+.project-left-column img {
+    width: 100%; 
+    margin-bottom: 10px;
+}
+
+.vertical-divider {
+    width: 1px;
+    background-color: var(--border-color);
+    margin: 0 15px;
+}
+
+.project-right-column {
+    flex: 1; 
+}
+
 .project-text-column {
     flex: 2; 
     border-right: 2px solid var(--border-color); 
