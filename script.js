@@ -340,7 +340,7 @@ const projectDetails = {
                             <p><strong>[해결 방법]</strong> BonusManager를 활용하여 특정 색상의 블록이 모두 제거되었는지 확인하고, 조건이 만족되면 보너스 점수를 계산하여 UI에 표시하도록 구현했습니다.</p>
                             <p><strong>[해결 과정]</strong> 게임 진행 중 블록 상태를 지속적으로 체크하고, 해당 색상 블록이 모두 제거되면 BonusManager가 보너스 점수 계산 후 UI를 띄워 플레이어에게 직관적으로 피드백을 제공하도록 처리했습니다.</p>
                     </div>
-                    <img src="https://raw.githubusercontent.com/Jinniepoo/PastelBlocks/main/Imgs/Horizontal.gif" alt="Bonus 시스템 GIF" width = "250"/>
+                    <img src="https://raw.githubusercontent.com/Jinniepoo/PastelBlocks/main/Imgs/Congratulations.gif" alt="Bonus 시스템 GIF" width = "250"/>
             </div>
 
             <div class="modal-feature-section">
