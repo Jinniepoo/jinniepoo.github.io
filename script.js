@@ -381,13 +381,15 @@ function openModal(projectId) {
                     <img src="${src}" alt="${project.title} 대표 이미지" class="project-summary-image single-left-image">
                 `).join('')}
             </div>
+            <div class="project-links" style="margin-top: 20px;">
+                ${linksHtml}
+            </div>
         `;
     }
 
     const featuresHtml = project.features.map(f => `<li>${f}</li>`).join('');
-
-    let leftColumnHtml = `
-        <div class="project-left-column">
+    let rightTextColumnHtml = `
+        <div class="project-right-column">
             <h1 style="font-size: 2.2rem; margin-bottom: 5px; color: white;">
                 ${project.title}<br>
                 <span style="font-size: 1rem; color: var(--text-color-darker); font-weight: 400;">
@@ -395,16 +397,6 @@ function openModal(projectId) {
                 </span>
             </h1>
 
-            ${summaryImageHtml}
-
-            <div class="project-links" style="margin-top: 20px;">
-                ${linksHtml}
-            </div>
-        </div>
-    `;
-
-    let rightTextColumnHtml = `
-        <div class="project-right-column">
             <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 10px; color: var(--text-color); margin-bottom: 20px;">
                 ${project.description}
             </p>
@@ -416,7 +408,9 @@ function openModal(projectId) {
 
     let mainSummaryHtml = `
         <div class="new-modal-layout">
-            ${leftColumnHtml}
+            <div class="project-left-column">
+                ${summaryImageHtml}
+            </div>
             ${rightTextColumnHtml}
         </div>
     `;
@@ -438,12 +432,6 @@ function openModal(projectId) {
     document.body.style.overflow = 'hidden';
 }
 
-
-function closeModal() {
-    const modal = document.getElementById('projectModal');
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto'; 
-}
 
 window.openModal = openModal;
 window.closeModal = closeModal;
