@@ -372,14 +372,19 @@ function openModal(projectId) {
         const btnClass = link.primary ? 'btn-primary' : 'btn-secondary';
         return `<a href="${link.url}" class="btn ${btnClass}" target="_blank">${link.text}</a>`;
     }).join('');
-    
+
     let summaryImageHtml = '';
     let rightImageCount = project.bannerImage.length;
     let rightImageHtml = '';
-    
+
     if (rightImageCount === 1) {
-        summaryImageHtml = `<div class="left-column-image-wrapper"><img src="${project.bannerImage[0]}" alt="${project.title} 대표 이미지" class="project-summary-image single-left-image"></div>`;
-        rightImageCount = 0; 
+        summaryImageHtml = `
+            <div class="left-column-image-wrapper">
+                <img src="${project.bannerImage[0]}" 
+                     alt="${project.title} 대표 이미지" 
+                     class="project-summary-image single-left-image">
+            </div>`;
+        rightImageCount = 0;
     } else if (rightImageCount > 1) {
         rightImageHtml = project.bannerImage.map(src => {
             return `<img src="${src}" alt="${project.title} 이미지" class="project-summary-image">`;
@@ -393,7 +398,6 @@ function openModal(projectId) {
                 <div class="image-wrapper">
                     ${rightImageHtml}
                 </div>
-                </div>
             </div>
         `;
     }
@@ -401,27 +405,41 @@ function openModal(projectId) {
     const featuresHtml = project.features.map(f => `<li>${f}</li>`).join('');
 
     let leftColumnHtml = `
-        <div class="project-text-column">
-            <h1 style="font-size: 2.2rem; margin-bottom: 5px; color: white;">${project.title} <span style="font-size: 1rem; color: var(--text-color-darker); font-weight: 400;">(${project.subtitle})</span></h1>
-            
+        <div class="project-left-column">
+            <h1 style="font-size: 2.2rem; margin-bottom: 5px; color: white;">
+                ${project.title}<br>
+                <span style="font-size: 1rem; color: var(--text-color-darker); font-weight: 400;">
+                    (${project.subtitle})
+                </span>
+            </h1>
+
             ${summaryImageHtml}
-            
+
+            <div class="project-links" style="margin-top: 20px;">
+                ${linksHtml}
+            </div>
+        </div>
+    `;
+
+    let rightTextColumnHtml = `
+        <div class="project-right-column">
             <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 10px; color: var(--text-color); margin-bottom: 20px;">
                 ${project.description}
             </p>
-                <h4>주요 기능 및 기여</h4>
-                <ul>${featuresHtml}</ul>
-            </div>
-            ${(rightImageCount === 0) ? `<div class="project-links project-links-inline" style="margin-top: 20px; width: 50%;">${linksHtml}</div>` : ''} 
+
+            <h4>주요 기능 및 기여</h4>
+            <ul>${featuresHtml}</ul>
         </div>
     `;
-    
+
     let mainSummaryHtml = `
         <div class="new-modal-layout">
             ${leftColumnHtml}
+            ${rightTextColumnHtml}
             ${rightColumnHtml}
         </div>
     `;
+
     let richDetailsHtml = '';
     if (project.richContent) {
         richDetailsHtml = `
@@ -434,9 +452,9 @@ function openModal(projectId) {
         ${mainSummaryHtml}
         ${richDetailsHtml}
     `;
-    
+
     modal.style.display = 'block';
-    document.body.style.overflow = 'hidden'; 
+    document.body.style.overflow = 'hidden';
 }
 
 function closeModal() {
