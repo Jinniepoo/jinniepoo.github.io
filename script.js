@@ -374,30 +374,12 @@ function openModal(projectId) {
     }).join('');
 
     let summaryImageHtml = '';
-    let rightImageCount = project.bannerImage.length;
-    let rightImageHtml = '';
-
-    if (rightImageCount === 1) {
+    if (project.bannerImage.length > 0) {
         summaryImageHtml = `
             <div class="left-column-image-wrapper">
-                <img src="${project.bannerImage[0]}" 
-                     alt="${project.title} 대표 이미지" 
-                     class="project-summary-image single-left-image">
-            </div>`;
-        rightImageCount = 0;
-    } else if (rightImageCount > 1) {
-        rightImageHtml = project.bannerImage.map(src => {
-            return `<img src="${src}" alt="${project.title} 이미지" class="project-summary-image">`;
-        }).join('');
-    }
-
-    let rightColumnHtml = '';
-    if (rightImageCount > 0) {
-        rightColumnHtml = `
-            <div class="project-image-column ${rightImageCount > 1 ? 'pastel-images' : 'single-image'}">
-                <div class="image-wrapper">
-                    ${rightImageHtml}
-                </div>
+                ${project.bannerImage.map(src => `
+                    <img src="${src}" alt="${project.title} 대표 이미지" class="project-summary-image single-left-image">
+                `).join('')}
             </div>
         `;
     }
@@ -436,7 +418,6 @@ function openModal(projectId) {
         <div class="new-modal-layout">
             ${leftColumnHtml}
             ${rightTextColumnHtml}
-            ${rightColumnHtml}
         </div>
     `;
 
@@ -456,6 +437,7 @@ function openModal(projectId) {
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
 }
+
 
 function closeModal() {
     const modal = document.getElementById('projectModal');
