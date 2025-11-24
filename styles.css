@@ -440,7 +440,7 @@ section:nth-child(even) {
 .project-links {
     display: flex;
     gap: 1rem;
-    margin-top: auto;
+    margin-top: 10px;
 
     position: relative; 
     z-index: 10;
