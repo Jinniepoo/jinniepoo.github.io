@@ -215,7 +215,7 @@ const projectDetails = {
         links: [
             { text: "GitHub", url: "https://github.com/Jinniepoo/Unity3D_Undervein", primary: false }
         ],
-        bannerImage: ["https://raw.githubusercontent.com/Jinniepoo/Unity3D_Undervein/main/Packages/GitImages/Undervein.png"],
+        bannerImage: ["https://raw.githubusercontent.com/Jinniepoo/Unity3D_Undervein/main/GitImages/Undervein.png"],
         richContent: `<div class="modal-rich-details">
 
     <div class="modal-feature-section">
@@ -227,7 +227,7 @@ const projectDetails = {
                 <p><strong>[해결 방법]</strong> Unity NavMeshAgent와 Mouse Raycast를 결합하여 이동 로직을 설계하고, Reticle UI를 통해 피드백을 제공했습니다. </p>
                 <p><strong>[해결 과정]</strong> 마우스 클릭 시 Mouse Raycast를 바닥에 쏘아 목표 지점의 3D 좌표를 획득합니다. NavMeshAgent 컴포넌트의 SetDestination() 함수를 사용하여 캐릭터를 해당 좌표로 이동시키며, 이동 중에는 애니메이션 컨트롤러를 통해 MoveState로 전환하고 목표 지점에 Reticle UI를 표시합니다.</p>
             </div>
-            <img src="https://raw.githubusercontent.com/Jinniepoo/Unity3D_Undervein/main/Packages/GitImages/ClickUI.gif" alt="탑다운 마우스 Raycast 기반 캐릭터 이동 GIF" />
+            <img src="https://raw.githubusercontent.com/Jinniepoo/Unity3D_Undervein/main/GitImages/ClickUI.gif" alt="탑다운 마우스 Raycast 기반 캐릭터 이동 GIF" />
         </div>
     </div>
     
@@ -240,7 +240,7 @@ const projectDetails = {
                 <p><strong>[해결 방법]</strong> FSM 패턴을 핵심 구조로 채택하여 상태별 로직을 분리하고, NavMeshAgent를 활용하여 몬스터의 순찰/추적 경로를 구현했습니다.</p>
                 <p><strong>[해결 과정]</strong> IdleState, MoveState, AttackState, DeadState 등 상태 클래스를 정의하여 공통 로직을 관리했습니다. 몬스터는 Waypoint를 따라 순찰하다가, 시야 범위(Detection Range) 내에 플레이어가 감지되면 추적으로 전환합니다. 공격 거리에 도달하면 AttackState로 전환하여 거리 기반 공격을 수행하고 이펙트를 연동했습니다.</p>
             </div>
-            <img src="https://raw.githubusercontent.com/Jinniepoo/Unity3D_Undervein/main/Packages/GitImages/MonsterAtt.gif" alt="FSM 기반 몬스터 공격 및 전투 GIF" />
+            <img src="https://raw.githubusercontent.com/Jinniepoo/Unity3D_Undervein/main/GitImages/MonsterAtt.gif" alt="FSM 기반 몬스터 공격 및 전투 GIF" />
         </div>
     </div>
 
@@ -253,7 +253,7 @@ const projectDetails = {
                 <p><strong>[해결 방법]</strong> Blender에서 장비 파츠를 직접 제작하고, Unity에서 기존 캐릭터의 Armature(Bone)를 재활용하여 부착하는 방식으로 문제를 해결했습니다.</p>
                 <p><strong>[해결 과정]</strong> Blender에서 신규 장비 모델을 제작 후, 기존 캐릭터 모델의 Armature 정보를 유지하며 장비를 바인딩했습니다. 게임 내에서 장비 장착 시, 해당 Skinned Mesh Prefab을 캐릭터 Armature의 적절한 위치에 인스턴스화(Instantiate)하여 교체를 구현했습니다. 또한 무기 Mesh 등은 Armature에 수작업으로 연결하여 동작 시 자연스러움을 확보했습니다.</p>
             </div>
-            <img src="https://raw.githubusercontent.com/Jinniepoo/Unity3D_Undervein/main/Packages/GitImages/EquipSkinned.gif" alt="Skinned Mesh 장비 교체 GIF" />
+            <img src="https://raw.githubusercontent.com/Jinniepoo/Unity3D_Undervein/main/GitImages/EquipSkinned.gif" alt="Skinned Mesh 장비 교체 GIF" />
         </div>
     </div>
 
@@ -266,7 +266,7 @@ const projectDetails = {
                 <p><strong>[해결 방법]</strong> Scriptable Object를 사용하여 아이템 데이터를 에셋으로 관리하고, 충돌 기반의 자동 습득 로직 및 우클릭 소비 로직을 구현했습니다.</p>
                 <p><strong>[해결 과정]</strong> 장비 및 소비 아이템 데이터를 Scriptable Object로 정의하여 유니티 에디터에서 쉽게 관리했습니다. 바닥에 떨어진 아이템은 플레이어와 충돌 시 자동으로 인벤토리에 추가되며, Consumable Item은 인벤토리 UI에서 우클릭 사용 시 체력 회복 등 지정된 Stats을 즉시 증가시키는 로직을 적용했습니다. </p>
             </div>
-            <img src="https://raw.githubusercontent.com/Jinniepoo/Unity3D_Undervein/main/Packages/GitImages/LootItems.gif" alt="아이템 습득 및 소비 GIF" />
+            <img src="https://raw.githubusercontent.com/Jinniepoo/Unity3D_Undervein/main/GitImages/LootItems.gif" alt="아이템 습득 및 소비 GIF" />
         </div>
     </div>
     
@@ -279,7 +279,7 @@ const projectDetails = {
                 <p><strong>[해결 방법:</strong> 마우스 Raycast를 활용한 NPC Targeting 기능과 거리 감지 로직을 결합하여 대화 시작 조건을 구현했습니다.</p>
                 <p><strong>[해결 과정]</strong> 특정 NPC를 우클릭으로 Targeting 후, 플레이어가 지정된 거리까지 이동하면 대화가 시작됩니다. 대화 시작 시 대화창 UI를 열고 애니메이션을 연동하여, 몰입감을 높이는 자연스러운 연출을 구현했습니다.</p>
             </div>
-            <img src="https://raw.githubusercontent.com/Jinniepoo/Unity3D_Undervein/main/Packages/GitImages/NPC.gif" alt="NPC 대화 시스템 GIF" />
+            <img src="https://raw.githubusercontent.com/Jinniepoo/Unity3D_Undervein/main/GitImages/NPC.gif" alt="NPC 대화 시스템 GIF" />
         </div>
     </div>
     
