@@ -279,7 +279,7 @@ const projectDetails = {
                 <p><strong>[해결 방법:</strong> 마우스 Raycast를 활용한 NPC Targeting 기능과 거리 감지 로직을 결합하여 대화 시작 조건을 구현했습니다.</p>
                 <p><strong>[해결 과정]</strong> 특정 NPC를 우클릭으로 Targeting 후, 플레이어가 지정된 거리까지 이동하면 대화가 시작됩니다. 대화 시작 시 대화창 UI를 열고 애니메이션을 연동하여, 몰입감을 높이는 자연스러운 연출을 구현했습니다.</p>
             </div>
-            <img src="https://raw.githubusercontent.com/Jinniepoo/Unity3D_Undervein/main/GitImages/NPC.gif" alt="NPC 대화 시스템 GIF" />
+            <img src="https://raw.githubusercontent.com/Jinniepoo/Unity6_Undervein3D/main/GitImages/NPC.gif" alt="NPC 대화 시스템 GIF" />
         </div>
     </div>
     
