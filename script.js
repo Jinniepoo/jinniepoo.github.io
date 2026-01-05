@@ -220,7 +220,8 @@ const projectDetails = {
 
     <div class="modal-feature-section">
         <h3>1. 캐릭터 조작 및 이동 시스템</h3>
-            <div class="text-content">
+            <div class="modal-feature-row">
+                <div class="text-content">
             <h4>FSM 기반 상태 제어와 NavMesh 연동을 통한 Top-Down 캐릭터 이동 시스템 구현</h4>
                 <p><strong>[문제 정의]</strong></p>
                 <p>    Top-Down 3D 시점에서 플레이어가 마우스 입력만으로 자연스럽게 이동 및 상호작용할 수 있는 조작 시스템이 필요했습니다.</p>
@@ -233,18 +234,19 @@ const projectDetails = {
                 <p><strong>  - 상태 처리:</strong> Idle / Move / Attack 상태를 FSM으로 관리하여 이동 중 공격, UI 상호작용 등 상태 충돌을 방지</p>
                 <p><strong>  - 피드백:</strong> 클릭 지점 및 타겟을 Reticle 오브젝트로 시각화하여 플레이어의 의도를 명확히 전달</p>
             </div>
+            <img src="https://raw.githubusercontent.com/Jinniepoo/Unity6_Undervein3D/main/GitImages/ClickUI.gif" alt="탑다운 마우스 Raycast 기반 캐릭터 이동 GIF" />
+            </div>
             
             <br>
-            <div class="modal-feature-row">
             <div class="text-content">
                 <p><strong>[구현 상세]</strong></p>
-                <p><strong>• 입력->상태 전환 구조:</strong></p>
+                <p><strong> • 입력->상태 전환 구조:</strong></p>
                 <p>마우스 입력은 UI 상호작용 여부를 우선적으로 판단한 뒤 처리되며, 좌클릭은 이동 명령, 우클릭은 공격 또는 상호작용 타겟 지정으로 분리했습니다.</p>
                 <p>  - 이동 입력 시 NavMeshAgent의 SetDestination()을 호출하여 경로를 계산</p>
                 <p>  - 공격 상태(AttackState)에 진입한 경우에는 이동 입력을 차단하여 상태 충돌 방지</p>
                 <p>  - 타겟 지정 시 공격 거리 또는 상호작용 거리 기준으로 자동 이동 및 상태 전환 처리</p>
                 <br>
-                <p><strong>• NavMeshAgent + CharacterController 병행 사용:</strong></p>
+                <p><strong> • NavMeshAgent + CharacterController 병행 사용:</strong></p>
                 <p>NavMeshAgent의 updatePosition을 비활성화하고, Agent가 계산한 속도 벡터를 CharacterController.Move()로 직접 적용하는 구조를 사용했습니다.</p>
                 <p>좌클릭은 이동 명령, 우클릭은 공격 또는 상호작용 타겟 지정으로 분리했습니다.</p>
                 <p>이를 통해:</p>
@@ -253,7 +255,7 @@ const projectDetails = {
                 <p>  - 이동 로직과 애니메이션의 책임 분리</p>
                 <p>를 동시에 만족할 수 있었습니다.</p>
                 
-                <p><strong>• FSM 기반 상태 관리:</strong></p>
+                <p><strong> • FSM 기반 상태 관리:</strong></p>
                 <p>캐릭터는 FSM을 통해 상태를 관리하며, 각 상태는 명확한 책임을 가집니다.</p>
                 <p><strong>-IdleState:</strong>  - 대기 상태에서 타겟 감지 또는 입력 발생 시 다음 상태로 전환</p>
                 <p><strong>-MoveState:</strong>  - NavMeshAgent를 통해 목표 지점 또는 타겟 위치로 이동</p>
@@ -268,12 +270,10 @@ const projectDetails = {
                 <p>-타겟이 존재할 경우 캐릭터가 자연스럽게 타겟을 바라보도록 회전 보정</p>
                 <p>-이동 속도에 따라 애니메이션 파라미터를 보간 처리하여 부드러운 전환 구현</p>
 
-                <p><strong>• 결:</strong></p>
-                <p>-이동, 공격, 상호작용이 충돌 없이 자연스럽게 이어지는 Top-Down 조작 시스템 완성</p>
-                <p>-FSM 기반 구조로 AI 및 몬스터 이동 로직과의 구조적 일관성 확보</p>
-                <p>-상태 추가 및 확장이 용이한 캐릭터 제어 아키텍처 구축</p>
-            </div>
-            <img src="https://raw.githubusercontent.com/Jinniepoo/Unity6_Undervein3D/main/GitImages/ClickUI.gif" alt="탑다운 마우스 Raycast 기반 캐릭터 이동 GIF" />
+                <p><strong> • 결과:</strong></p>
+                <p>  - 이동, 공격, 상호작용이 충돌 없이 자연스럽게 이어지는 Top-Down 조작 시스템 완성</p>
+                <p>  - FSM 기반 구조로 AI 및 몬스터 이동 로직과의 구조적 일관성 확보</p>
+                <p>  - 상태 추가 및 확장이 용이한 캐릭터 제어 아키텍처 구축</p>
             </div>
     </div>
     
