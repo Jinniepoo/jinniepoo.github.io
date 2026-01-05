@@ -106,9 +106,9 @@ const projectDetails = {
 
         <div class="modal-feature-section">
                  <h3>1. 캐릭터 핵심 조작 및 전투 로직</h3>
+                <h4>3D 플랫포머 환경에서의 정교한 조작 구현 및 넉백 기반 전투 시스템</h4>
                  <div class="modal-feature-row reverse">
                      <div class="text-content">
-                         <h4>3D 플랫포머 환경에서의 정교한 조작 구현 및 넉백 기반 전투 시스템</h4>
                          <p><strong>[문제 정의]</strong> 3D 환경에서 캐릭터 이동, 점프, 꼬리 공격 등 핵심 메커니즘을 구현하고, 물리 기반의 피격 및 넉백 시스템을 적용하여 게임 플레이의 재미를 확보해야 했습니다.</p>
                          <p><strong>[해결 방법]</strong> DirectX11 자체 엔진에서 AABB/OBB 충돌 체크를 기반으로 공격을 감지하고, <strong>포물선 공식</strong> 및 애니메이션 상태 머신을 이용해 전투를 연출했습니다.</p>
                          <p><strong>[해결 과정]</strong> 꼬리 공격 시 충돌 감지 후, 몬스터 피격 시 1차 애니메이션(어지러움)을 재생합니다. 2차 공격 시에는 <strong>포물선 공식 기반 넉백</strong>을 적용하여 몬스터를 Dead 처리했습니다. Burrow Mode 로직을 통해 지면 내 아이템 수집 및 파티클 연출을 구현했습니다.</p>
@@ -119,9 +119,9 @@ const projectDetails = {
              
              <div class="modal-feature-section">
                  <h3>2. 퀘스트 메커니즘 및 파츠 연결 시스템</h3>
+                         <h4>Golem Head 파츠를 수집하고 Player PartObject에 동적 연결하는 연출 구현</h4>
                  <div class="modal-feature-row">
                      <div class="text-content">
-                         <h4>Golem Head 파츠를 수집하고 Player PartObject에 동적 연결하는 연출 구현</h4>
                          <p><strong>[문제 정의]</strong> 단순 전투 외에 아이템 수집 후 캐릭터의 특정 파츠에 연결하여 퀘스트를 진행하는 연출 및 로직 구현이 필요했습니다.</p>
                          <p><strong>[해결 방법]</strong> Golem Head를 Loot Object로 처리하고, Player의 Hand PartObject에 Attach/Detach 로직을 구현하여 해결했습니다.</p>
                          <p><strong>[해결 과정]</strong> 플레이어가 GolemHead와 충돌하여 획득하면, Head Mesh를 Player Armature의 Hand 노드에 부착(Attach)합니다. 이를 통해 Head가 움직임에 따라 자연스럽게 따라다니며 퀘스트 진행 상황을 시각적으로 보여주고, 아이템 수집 후에는 해당 Object를 제거했습니다.</p>
@@ -132,9 +132,9 @@ const projectDetails = {
              
              <div class="modal-feature-section">
                  <h3>3. ImGui 기반 Map Tool 제작 (오브젝트 편집)</h3>
+                         <h4>인게임 환경에서 오브젝트 배치, 편집, 디버깅을 위한 도구 개발</h4>
                  <div class="modal-feature-row reverse">
                      <div class="text-content">
-                         <h4>인게임 환경에서 오브젝트 배치, 편집, 디버깅을 위한 도구 개발</h4>
                          <p><strong>[문제 정의]</strong> 레벨 디자인과 디버깅 편의성을 위해 인게임 내에서 오브젝트의 위치, 회전, 스케일을 즉시 편집하고 결과를 확인할 수 있는 전용 도구가 필요했습니다.</p>
                          <p><strong>[해결 방법]</strong> ImGui 라이브러리를 활용하여 툴 UI를 구성하고, 선택된 오브젝트의 <strong>World Matrix를 직접 조작</strong>하는 기능을 구현했습니다.</p>
                          <p><strong>[해결 과정]</strong> ImGui의 슬라이더(Slider) 및 인풋 필드를 이용해 선택된 오브젝트의 World Matrix를 실시간으로 업데이트합니다. 또한 코인, 클로버 등의 Collectibles을 툴에서 삭제/배치하고, 이들의 회전 애니메이션 및 점수 증가 로직을 연동하여 레벨 디자인 효율을 높였습니다.</p>
@@ -145,9 +145,9 @@ const projectDetails = {
 
              <div class="modal-feature-section">
                  <h3>4. Map Tool - Navigation 시스템 및 픽셀 피킹</h3>
+                         <h4>AI 경로 탐색을 위한 Cell 생성 및 마우스 기반 월드 좌표 계산 로직</h4>
                  <div class="modal-feature-row">
                      <div class="text-content">
-                         <h4>AI 경로 탐색을 위한 Cell 생성 및 마우스 기반 월드 좌표 계산 로직</h4>
                          <p><strong>[문제 정의]</strong> 몬스터 AI가 이동할 수 있는 영역(Cell)을 사용자가 직접 생성해야 했으며, 마우스 클릭 지점의 정확한 3D 월드 좌표를 얻어야 했습니다.</p>
                          <p><strong>[해결 방법]</strong> <strong>픽셀 피킹(Pixel Picking) 기법</strong>으로 마우스 좌표를 3D 좌표로 변환하고, 삼각형 Cell의 <strong>시계방향(Clockwise) 정렬 로직</strong>을 구현하여 데이터의 안정성을 확보했습니다.</p>
                          <p><strong>[해결 과정]</strong> 마우스 클릭 시 Depth/Normal 버퍼를 이용하여 픽셀 피킹을 수행, 월드 좌표를 획득합니다. Cell 생성 시, 3개의 포인트를 입력받아 <strong>벡터 외적</strong>을 통해 정점 순서를 검사하고 필요 시 교환하여 시계방향 정렬을 보장했습니다. 또한, <strong>Snap 기능</strong>을 구현하여 이미 존재하는 포인트에 자동으로 연결되도록 개발 편의성을 높였습니다.</p>
@@ -158,9 +158,9 @@ const projectDetails = {
              
              <div class="modal-feature-section">
                  <h3>5. Gimmick Object 및 환경 상호작용</h3>
+                         <h4>점프 패드, 체크포인트, 이벤트 게이트 등 게임 환경의 역동성을 높이는 기믹 구현</h4>
                  <div class="modal-feature-row reverse">
                      <div class="text-content">
-                         <h4>점프 패드, 체크포인트, 이벤트 게이트 등 게임 환경의 역동성을 높이는 기믹 구현</h4>
                          <p><strong>[문제 정의]</strong> 점프 패드, 체크포인트, 이벤트 게이트 등 게임 플레이에 변화를 주는 기믹 오브젝트의 로직과 연출을 구현해야 했습니다.</p>
                          <p><strong>[해결 방법]</strong> 오브젝트별 고유한 충돌 이벤트 리스너와 상태 변화 로직을 설계하여 적용했습니다.</p>
                          <p><strong>[해결 과정]</strong> <strong>점프 패드</strong>: 플레이어 충돌 시 Bouncing 효과 및 스케일 변화 연출. <strong>체크포인트</strong>: 진입 시 이펙트/애니메이션 실행. <strong>게이트</strong>: Blender에서 직접 피벗 포인트를 조절한 모델을 불러와 회전 구현. <strong>미로 벨</strong>: 이벤트 트리거를 통해 벽의 지진 효과와 이동 연출을 구현했습니다.</p>
@@ -171,9 +171,9 @@ const projectDetails = {
              
              <div class="modal-feature-section">
                  <h3>6. Monster AI 및 렌더링 최적화</h3>
+                         <h4>단순 상태 머신 기반의 추적 AI와 Instancing/Frustum Culling 최적화</h4>
                  <div class="modal-feature-row">
                      <div class="text-content">
-                         <h4>단순 상태 머신 기반의 추적 AI와 Instancing/Frustum Culling 최적화</h4>
                          <p><strong>[문제 정의]</strong> 몬스터가 플레이어를 감지하고 추적/공격하는 기본적인 AI 로직을 구현하고, 다수 오브젝트 렌더링으로 인한 성능 저하를 개선해야 했습니다.</p>
                          <p><strong>[해결 방법]</strong> 단순 <strong>상태 머신(State Machine)</strong> 패턴을 적용하여 AI를 구현하고, 렌더링 파이프라인에 최적화 기법을 도입했습니다.</p>
                          <p><strong>[해결 과정]</strong> 몬스터의 상태(Idle / 추적 / 공격 / 피격)를 FSM으로 관리하여 유기적인 동작을 구현했습니다. 렌더링 최적화를 위해 <strong>Instancing 기반 렌더링</strong>을 적용하여 다수 오브젝트의 Draw Call을 줄였으며, <strong>Frustum Culling</strong>을 통해 화면에 보이지 않는 오브젝트의 렌더링을 제거하여 성능을 개선했습니다.</p>
@@ -220,13 +220,13 @@ const projectDetails = {
 
     <div class="modal-feature-section">
         <h3>1. 캐릭터 조작 및 이동 시스템</h3>
-            <div class="modal-feature-row">
-                <div class="text-content">
             <h4>FSM 기반 상태 제어와 NavMesh 연동을 통한 Top-Down 캐릭터 이동 시스템 구현</h4>
                 <p><strong>[문제 정의]</strong></p>
                 <p>    Top-Down 3D 시점에서 플레이어가 마우스 입력만으로 자연스럽게 이동 및 상호작용할 수 있는 조작 시스템이 필요했습니다.</p>
                 <p>    단순한 위치 이동을 넘어, 이동·정지·공격·상호작용 상태가 충돌하지 않고 유기적으로 전환되며, 애니메이션 및 시각적 피드백이 일관되게 유지되는 구조를 목표로 했습니다.</p>
-                <br>
+                
+            <div class="modal-feature-row">
+                <div class="text-content">
                 <p><strong>[해결 방법]</strong></p>
                 <p>입력 처리, 이동 로직, 상태 전환 책임을 명확히 분리한 FSM 기반 캐릭터 제어 구조를 설계했습니다.</p>
                 <p><strong>  - 입력 처리:</strong> Unity New Input System을 사용하여 입력 이벤트를 명확히 분리</p>
@@ -237,7 +237,6 @@ const projectDetails = {
             <img src="https://raw.githubusercontent.com/Jinniepoo/Unity6_Undervein3D/main/GitImages/ClickUI.gif" alt="탑다운 마우스 Raycast 기반 캐릭터 이동 GIF" />
             </div>
             
-            <br>
             <div class="text-content">
                 <p><strong>[구현 상세]</strong></p>
                 <p><strong> • 입력->상태 전환 구조:</strong></p>
@@ -249,27 +248,28 @@ const projectDetails = {
                 <p><strong> • NavMeshAgent + CharacterController 병행 사용:</strong></p>
                 <p>NavMeshAgent의 updatePosition을 비활성화하고, Agent가 계산한 속도 벡터를 CharacterController.Move()로 직접 적용하는 구조를 사용했습니다.</p>
                 <p>좌클릭은 이동 명령, 우클릭은 공격 또는 상호작용 타겟 지정으로 분리했습니다.</p>
+                <br>
                 <p>이를 통해:</p>
                 <p>  - Root Motion 기반 애니메이션과 이동 동기화</p>
                 <p>  - 정지/가속 시 애니메이션 블렌딩 제어</p>
                 <p>  - 이동 로직과 애니메이션의 책임 분리</p>
                 <p>를 동시에 만족할 수 있었습니다.</p>
-                
+                <br>
                 <p><strong> • FSM 기반 상태 관리:</strong></p>
                 <p>캐릭터는 FSM을 통해 상태를 관리하며, 각 상태는 명확한 책임을 가집니다.</p>
-                <p><strong>-IdleState:</strong>  - 대기 상태에서 타겟 감지 또는 입력 발생 시 다음 상태로 전환</p>
-                <p><strong>-MoveState:</strong>  - NavMeshAgent를 통해 목표 지점 또는 타겟 위치로 이동</p>
-                <p>                              - 도착 조건 만족 시 Idle 또는 Attack 상태로 전환</p>
+                <p><strong>-IdleState:</strong>   대기 상태에서 타겟 감지 또는 입력 발생 시 다음 상태로 전환</p>
+                <p><strong>-MoveState:</strong>   NavMeshAgent를 통해 목표 지점 또는 타겟 위치로 이동</p>
+                <p>                               도착 조건 만족 시 Idle 또는 Attack 상태로 전환</p>
                 <p><strong>-AttackState:</strong>-애니메이션 타이밍과 연동된 공격 처리</p>
                 <p>                              -공격 중 이동 입력 차단</p>
                 <br>
                 <p> 이 구조를 통해 Update 함수 내 조건 분기를 최소화하고, 상태 추가 및 수정 시 다른 로직에 영향을 주지 않도록 설계했습니다.</p>
-
-                <p><strong>• 시각적 피드백 및 방향 제어:</strong></p>
+                <br>
+                <p><strong> • 시각적 피드백 및 방향 제어:</strong></p>
                 <p>-이동 또는 타겟 지정 시 Reticle 오브젝트를 사용해 목표 위치를 명확히 표시</p>
                 <p>-타겟이 존재할 경우 캐릭터가 자연스럽게 타겟을 바라보도록 회전 보정</p>
                 <p>-이동 속도에 따라 애니메이션 파라미터를 보간 처리하여 부드러운 전환 구현</p>
-
+                <br>
                 <p><strong> • 결과:</strong></p>
                 <p>  - 이동, 공격, 상호작용이 충돌 없이 자연스럽게 이어지는 Top-Down 조작 시스템 완성</p>
                 <p>  - FSM 기반 구조로 AI 및 몬스터 이동 로직과의 구조적 일관성 확보</p>
