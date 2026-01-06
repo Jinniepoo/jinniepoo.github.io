@@ -224,26 +224,41 @@ const projectDetails = {
                 <p><strong>Top-Down 3D 시점</strong>에서 플레이어가 <strong>마우스 입력</strong>만으로 자연스럽게 <strong>이동 및 상호작용</strong>할 수 있는 <strong>조작 시스템</strong>이 필요했습니다.</p>
                 <p>단순한 위치 이동을 넘어, <strong>이동/정지/공격/상호작용 상태</strong>가 충돌하지 않고 <strong>유기적으로 전환</strong>되며, 애니메이션 및 시각적 피드백이 <strong>일관되게 유지</strong>되는 구조를 목표로 했습니다.</p>
             <br>
-            <span class="status-badge">
-            <p><strong>해결 방법</strong></p>
+            <span class="modal-feature-row-badge">
+            <strong>해결 방법</strong>
             </span>
-            <p>입력 처리, 이동 로직, 상태 전환 책임을 명확히 분리한 FSM 기반 캐릭터 제어 구조를 설계했습니다.</p>
+            <p>입력 처리, 이동 로직, 상태 전환 책임을 명확히 분리한 <strong>FSM 기반 캐릭터 제어 구조</strong>를 설계했습니다.</p>
+            <br>
             <div class="modal-feature-row">
                 <div class="text-content">
-                <p><strong>- 입력 처리:</strong> Unity New Input System을 사용하여 입력 이벤트를 명확히 분리</p>
-                <p><strong>- 이동 처리:</strong> NavMeshAgent를 기반으로 경로 탐색을 담당하게 하고, 실제 이동은 CharacterController를 통해 수동 제어</p>
-                <p><strong>- 상태 처리:</strong> Idle / Move / Attack 상태를 FSM으로 관리하여 이동 중 공격, UI 상호작용 등 상태 충돌을 방지</p>
-                <p><strong>- 피드백:</strong> 클릭 지점 및 타겟을 Reticle 오브젝트로 시각화하여 플레이어의 의도를 명확히 전달</p>
+                    <p class="feature-line">
+                        <span class="feature-title">입력 처리</span>
+                        Unity New Input System을 사용하여 입력 이벤트를 명확히 분리
+                    </p>
+                    <p class="feature-line">
+                        <span class="feature-title">이동 처리</span>
+                        NavMeshAgent를 기반으로 경로 탐색을 담당하게 하고, 실제 이동은 CharacterController를 통해 수동 제어
+                    </p>
+                    <p class="feature-line">
+                        <span class="feature-title">상태 처리</span>
+                        Idle / Move / Attack 상태를 FSM으로 관리하여 이동 중 공격, UI 상호작용 등 상태 충돌을 방지
+                    </p>
+                    <p class="feature-line">
+                        <span class="feature-title">피드백</span>
+                        클릭 지점 및 타겟을 Reticle 오브젝트로 시각화하여 플레이어의 의도를 명확히 전달
+                    </p>
             </div>
             <img src="https://raw.githubusercontent.com/Jinniepoo/Unity6_Undervein3D/main/GitImages/ClickUI.gif" alt="탑다운 마우스 Raycast 기반 캐릭터 이동 GIF" />
             </div>
-            
+            <span class="modal-feature-row-badge">
+            <strong>구현 상세</strong>
+            </span>
+            <div class="modal-feature-row">
             <div class="text-content">
-            <span class="status-badge">
-                <p><strong>구현 상세</strong></p>
-                </span>
-                <p><strong> • 입력->상태 전환 구조:</strong></p>
-                <p>마우스 입력은 UI 상호작용 여부를 우선적으로 판단한 뒤 처리되며, 좌클릭은 이동 명령, 우클릭은 공격 또는 상호작용 타겟 지정으로 분리했습니다.</p>
+                <p class="feature-line">
+                        <span class="feature-title">입력->상태 전환 구조</span>
+                        마우스 입력은 UI 상호작용 여부를 우선적으로 판단한 뒤 처리되며, 좌클릭은 이동 명령, 우클릭은 공격 또는 상호작용 타겟 지정으로 분리했습니다.
+                    </p>
                 <p>  - 이동 입력 시 NavMeshAgent의 SetDestination()을 호출하여 경로를 계산</p>
                 <p>  - 공격 상태(AttackState)에 진입한 경우에는 이동 입력을 차단하여 상태 충돌 방지</p>
                 <p>  - 타겟 지정 시 공격 거리 또는 상호작용 거리 기준으로 자동 이동 및 상태 전환 처리</p>
@@ -279,6 +294,7 @@ const projectDetails = {
                 <p>  - 이동, 공격, 상호작용이 충돌 없이 자연스럽게 이어지는 Top-Down 조작 시스템 완성</p>
                 <p>  - FSM 기반 구조로 AI 및 몬스터 이동 로직과의 구조적 일관성 확보</p>
                 <p>  - 상태 추가 및 확장이 용이한 캐릭터 제어 아키텍처 구축</p>
+            </div>
             </div>
     </div>
     
