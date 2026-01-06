@@ -531,21 +531,48 @@ section:nth-child(even) {
     color: var(--accent-color); 
     margin-bottom: 10px;
 }
+
+.feature-line {
+    margin: 6px 0;
+}
+
+.feature-title {
+    padding: 0.5rem 1.0rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: inline-block;
+    margin-bottom: 5px;
+    background-color: transparent;
+    border: 1.5px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.modal-feature-row-badge{
+    padding: 0.25rem 1.0rem;
+    border-radius: 5px;
+    font-size: 1.0rem;
+    font-weight: 500;
+    display: inline-block;
+    margin-bottom: 12px;
+    background-color: var(--accent-color);
+    color: #1a1a1a;
+}
 .modal-feature-row { 
     display: flex; 
     align-items: center; 
     gap: 30px; 
-    margin-bottom: 40px; 
+    margin-bottom: 30px; 
 }
 .modal-feature-row img { 
-    max-width: 45%; 
+    max-width: 40%; 
     height: auto; 
     border-radius: 8px; 
     box-shadow: 0 4px 10px rgba(0,0,0,0.4);
 }
 .modal-feature-row .text-content { 
     flex: 1; 
-    line-height: 1.7; 
+    line-height: 1; 
     font-size: 1.05rem;
 }
 .modal-feature-row.reverse { 
