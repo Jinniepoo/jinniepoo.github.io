@@ -219,84 +219,115 @@ const projectDetails = {
         richContent: `<div class="modal-rich-details">
 
     <div class="modal-feature-section">
-        <h3>1. 캐릭터 조작 및 이동 시스템</h3>
-            <h4>FSM 기반 상태 제어와 NavMesh 연동을 통한 Top-Down 캐릭터 이동 시스템 구현</h4>
-                <p><strong>Top-Down 3D 시점</strong>에서 플레이어가 <strong>마우스 입력</strong>만으로 자연스럽게 <strong>이동 및 상호작용</strong>할 수 있는 <strong>조작 시스템</strong>이 필요했습니다.</p>
-                <p>단순한 위치 이동을 넘어, <strong>이동/정지/공격/상호작용 상태</strong>가 충돌하지 않고 <strong>유기적으로 전환</strong>되며, 애니메이션 및 시각적 피드백이 <strong>일관되게 유지</strong>되는 구조를 목표로 했습니다.</p>
-            <br>
-            <span class="modal-feature-row-badge">
-            <strong>해결 방법</strong>
-            </span>
-            <p>입력 처리, 이동 로직, 상태 전환 책임을 명확히 분리한 <strong>FSM 기반 캐릭터 제어 구조</strong>를 설계했습니다.</p>
-            <br>
+    <h3>1. 캐릭터 조작 및 이동 시스템</h3>
+    <h4>FSM 기반 상태 제어와 NavMesh 연동을 통한 Top-Down 캐릭터 이동 시스템 구현</h4>
+
+    <p><strong>Top-Down 3D 시점</strong>에서 플레이어가 <strong>마우스 입력</strong>만으로 자연스럽게
+        <strong>이동 및 상호작용</strong>할 수 있는 <strong>조작 시스템</strong>이 필요했습니다.</p>
+        <p>단순한 위치 이동을 넘어, <strong>이동/정지/공격/상호작용 상태</strong>가 충돌하지 않고
+        <strong>유기적으로 전환</strong>되며, 애니메이션 및 시각적 피드백이
+        <strong>일관되게 유지</strong>되는 구조를 목표로 했습니다.</p>
+
+    <div class="tab-container">
+        <div class="tab-header">
+            <button class="tab-btn active" data-tab="solution">해결 방법</button>
+            <button class="tab-btn" data-tab="detail">구현 상세</button>
+        </div>
+
+        <div id="solution" class="tab-content active">
+            <p>
+                입력 처리, 이동 로직, 상태 전환 책임을 명확히 분리한
+                <strong>FSM 기반 캐릭터 제어 구조</strong>를 설계했습니다.
+            </p>
+
+            <div class="modal-feature-row">
+                <div class="text-content">
+
+                    <p class="feature-line">
+                        <span class="feature-title">입력 처리</span>
+                        <span class="feature-desc">
+                            Unity New Input System을 사용하여 입력 이벤트를 명확히 분리
+                        </span>
+                    </p>
+
+                    <p class="feature-line">
+                        <span class="feature-title">이동 처리</span>
+                        <span class="feature-desc">
+                            NavMeshAgent를 기반으로 경로 탐색을 담당하게 하고, 실제 이동은
+                            <i>CharacterController</i>를 통해 수동 제어
+                        </span>
+                    </p>
+
+                    <p class="feature-line">
+                        <span class="feature-title">상태 처리</span>
+                        <span class="feature-desc">
+                            Idle / Move / Attack 상태를 FSM으로 관리하여 이동 중 공격, UI 상호작용 등 상태 충돌을 방지
+                        </span>
+                    </p>
+
+                    <p class="feature-line">
+                        <span class="feature-title">피드백</span>
+                        <span class="feature-desc">
+                            클릭 지점 및 타겟을 Reticle 오브젝트로 시각화하여 플레이어의 의도를 명확히 전달
+                        </span>
+                    </p>
+
+                </div>
+
+                <img src="https://raw.githubusercontent.com/Jinniepoo/Unity6_Undervein3D/main/GitImages/ClickUI.gif"
+                     alt="탑다운 마우스 이동 GIF" />
+            </div>
+        </div>
+
+        <div id="detail" class="tab-content scrollable">
             <div class="modal-feature-row">
                 <div class="text-content">
                     <p class="feature-line">
-                        <span class="feature-title">입력 처리</span>
-                        Unity New Input System을 사용하여 입력 이벤트를 명확히 분리
-                    </p>
-                    <p class="feature-line">
-                        <span class="feature-title">이동 처리</span>
-                        NavMeshAgent를 기반으로 경로 탐색을 담당하게 하고, 실제 이동은 CharacterController를 통해 수동 제어
-                    </p>
-                    <p class="feature-line">
-                        <span class="feature-title">상태 처리</span>
-                        Idle / Move / Attack 상태를 FSM으로 관리하여 이동 중 공격, UI 상호작용 등 상태 충돌을 방지
-                    </p>
-                    <p class="feature-line">
-                        <span class="feature-title">피드백</span>
-                        클릭 지점 및 타겟을 Reticle 오브젝트로 시각화하여 플레이어의 의도를 명확히 전달
-                    </p>
-            </div>
-            <img src="https://raw.githubusercontent.com/Jinniepoo/Unity6_Undervein3D/main/GitImages/ClickUI.gif" alt="탑다운 마우스 Raycast 기반 캐릭터 이동 GIF" />
-            </div>
-            <span class="modal-feature-row-badge">
-            <strong>구현 상세</strong>
-            </span>
-            <div class="modal-feature-row">
-            <div class="text-content">
-                <p class="feature-line">
-                        <span class="feature-title">입력->상태 전환 구조</span>
+                        <span class="feature-title">입력 → 상태 전환</span>
                         마우스 입력은 UI 상호작용 여부를 우선적으로 판단한 뒤 처리되며, 좌클릭은 이동 명령, 우클릭은 공격 또는 상호작용 타겟 지정으로 분리했습니다.
                     </p>
-                <p>  - 이동 입력 시 NavMeshAgent의 SetDestination()을 호출하여 경로를 계산</p>
-                <p>  - 공격 상태(AttackState)에 진입한 경우에는 이동 입력을 차단하여 상태 충돌 방지</p>
-                <p>  - 타겟 지정 시 공격 거리 또는 상호작용 거리 기준으로 자동 이동 및 상태 전환 처리</p>
-                <br>
-                <p><strong> • NavMeshAgent + CharacterController 병행 사용:</strong></p>
-                <p>NavMeshAgent의 updatePosition을 비활성화하고, Agent가 계산한 속도 벡터를 CharacterController.Move()로 직접 적용하는 구조를 사용했습니다.</p>
-                <p>좌클릭은 이동 명령, 우클릭은 공격 또는 상호작용 타겟 지정으로 분리했습니다.</p>
-                <br>
-                <p>이를 통해:</p>
-                <p>  - Root Motion 기반 애니메이션과 이동 동기화</p>
-                <p>  - 정지/가속 시 애니메이션 블렌딩 제어</p>
-                <p>  - 이동 로직과 애니메이션의 책임 분리</p>
-                <p>를 동시에 만족할 수 있었습니다.</p>
-                <br>
-                <p><strong> • FSM 기반 상태 관리:</strong></p>
-                <p>캐릭터는 FSM을 통해 상태를 관리하며, 각 상태는 명확한 책임을 가집니다.</p>
-                <p><strong>-IdleState:</strong>   대기 상태에서 타겟 감지 또는 입력 발생 시 다음 상태로 전환</p>
-                <p><strong>-MoveState:</strong>   NavMeshAgent를 통해 목표 지점 또는 타겟 위치로 이동</p>
-                <p>                               도착 조건 만족 시 Idle 또는 Attack 상태로 전환</p>
-                <p><strong>-AttackState:</strong>-애니메이션 타이밍과 연동된 공격 처리</p>
-                <p>                              -공격 중 이동 입력 차단</p>
-                <br>
-                <p> 이 구조를 통해 Update 함수 내 조건 분기를 최소화하고, 상태 추가 및 수정 시 다른 로직에 영향을 주지 않도록 설계했습니다.</p>
-                <br>
-                <p><strong> • 시각적 피드백 및 방향 제어:</strong></p>
-                <p>-이동 또는 타겟 지정 시 Reticle 오브젝트를 사용해 목표 위치를 명확히 표시</p>
-                <p>-타겟이 존재할 경우 캐릭터가 자연스럽게 타겟을 바라보도록 회전 보정</p>
-                <p>-이동 속도에 따라 애니메이션 파라미터를 보간 처리하여 부드러운 전환 구현</p>
-                <br>
-                <span class="status-badge">
-                <p><strong>결과</strong></p>
-                </span>
-                <p>  - 이동, 공격, 상호작용이 충돌 없이 자연스럽게 이어지는 Top-Down 조작 시스템 완성</p>
-                <p>  - FSM 기반 구조로 AI 및 몬스터 이동 로직과의 구조적 일관성 확보</p>
-                <p>  - 상태 추가 및 확장이 용이한 캐릭터 제어 아키텍처 구축</p>
+
+                    <p>- 이동 입력 시 NavMeshAgent의 SetDestination()을 호출하여 경로를 계산</p>
+                    <p>- 공격 상태(AttackState)에 진입한 경우에는 이동 입력을 차단하여 상태 충돌 방지</p>
+                    <p>- 타겟 지정 시 공격 거리 또는 상호작용 거리 기준으로 자동 이동 및 상태 전환 처리</p>
+                    <br>
+
+                    <p class="feature-line">
+                        <span class="feature-title"><strong>NavMeshAgent + CharacterController 병행 사용</strong></span>
+                        좌클릭은 이동 명령, 우클릭은 공격 또는 상호작용 타겟 지정으로 분리했습니다.
+                    </p>
+                    <p>- NavMeshAgent의 updatePosition을 비활성화</p>
+                    <p>- Agent가 계산한 속도 벡터를 CharacterController.Move()로 직접 적용하는 구조를 사용했습니다.</p>
+                    <br>
+
+                    <p> 이를 통해: Root Motion 동기화, 정지/가속 시 애니메이션 블렌딩 제어, 이동/애니메이션 책임 분리를 동시에 만족할 수 있었습니다.</p>
+
+                    <br>
+                    <p class="feature-line">
+                        <span class="feature-title">FSM 기반 상태 관리</span>
+                        <p>캐릭터는 FSM을 통해 상태를 관리하며, 각 상태는 명확한 책임을 가지도록 구현했습니다.</p>
+                        <p><strong>- IdleState:</strong>   대기 상태에서 타겟 감지 또는 입력 발생 시 다음 상태로 전환</p>
+                        <p><strong>- MoveState:</strong>   NavMeshAgent를 통해 목표 지점 또는 타겟 위치로 이동</p>
+                        <p>도착 조건 만족 시 Idle 또는 Attack 상태로 전환</p>
+                        <p><strong>- AttackState:</strong>애니메이션 타이밍과 연동된 공격 처리</p>
+                        <p>-공격 중 이동 입력 차단</p>
+                    </p>
+                    <p> 이 구조를 통해 Update 함수 내 조건 분기를 최소화하고, 상태 추가 및 수정 시 다른 로직에 영향을 주지 않도록 설계했습니다.</p>
+                    <p><strong></strong></p>
+                    <br>
+
+                    <p class="feature-line">
+                    <span class="feature-title">결과</span>
+                    <p>- 이동, 공격, 상호작용이 충돌 없이 자연스럽게 이어지는 Top-Down 조작 시스템 완성</p>
+                    <p>- FSM 기반 구조로 AI 및 몬스터 이동 로직과의 구조적 일관성 확보</p>
+                    <p>- 상태 추가 및 확장이 용이한 캐릭터 제어 아키텍처 구축</p>
+                    </p>
+                </div>
             </div>
-            </div>
+        </div>
     </div>
+</div>
+
     
     <div class="modal-feature-section">
         <h3>2. FSM (Finite State Machine) 및 AI 전투</h3>
@@ -530,4 +561,24 @@ window.addEventListener('click', (event) => {
     if (event.target === modal) {
         closeModal();
     }
+});
+
+document.addEventListener('click', function (e) {
+    const button = e.target.closest('.tab-btn');
+    if (!button) return;
+
+    const tabId = button.dataset.tab;
+    const tabContainer = button.closest('.tab-container');
+
+    if (!tabContainer) return;
+
+    tabContainer.querySelectorAll('.tab-btn').forEach(btn =>
+        btn.classList.remove('active')
+    );
+    button.classList.add('active');
+
+    tabContainer.querySelectorAll('.tab-content').forEach(content =>
+        content.classList.remove('active')
+    );
+    tabContainer.querySelector(`#${tabId}`).classList.add('active');
 });
