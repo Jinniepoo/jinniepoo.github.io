@@ -224,11 +224,9 @@ const projectDetails = {
                 <p><strong>Top-Down 3D 시점</strong>에서 플레이어가 <strong>마우스 입력</strong>만으로 자연스럽게 <strong>이동 및 상호작용</strong>할 수 있는 <strong>조작 시스템</strong>이 필요했습니다.</p>
                 <p>단순한 위치 이동을 넘어, <strong>이동/정지/공격/상호작용 상태</strong>가 충돌하지 않고 <strong>유기적으로 전환</strong>되며, 애니메이션 및 시각적 피드백이 <strong>일관되게 유지</strong>되는 구조를 목표로 했습니다.</p>
             <br>
-            <div class="project-status">
-            <div class="status-badge">
+            <span class="status-badge">
             <p><strong>해결 방법</strong></p>
-            </div>
-            </div>
+            </span>
             <p>입력 처리, 이동 로직, 상태 전환 책임을 명확히 분리한 FSM 기반 캐릭터 제어 구조를 설계했습니다.</p>
             <div class="modal-feature-row">
                 <div class="text-content">
@@ -241,7 +239,9 @@ const projectDetails = {
             </div>
             
             <div class="text-content">
-                <p><strong>[구현 상세]</strong></p>
+            <span class="status-badge">
+                <p><strong>구현 상세</strong></p>
+                </span>
                 <p><strong> • 입력->상태 전환 구조:</strong></p>
                 <p>마우스 입력은 UI 상호작용 여부를 우선적으로 판단한 뒤 처리되며, 좌클릭은 이동 명령, 우클릭은 공격 또는 상호작용 타겟 지정으로 분리했습니다.</p>
                 <p>  - 이동 입력 시 NavMeshAgent의 SetDestination()을 호출하여 경로를 계산</p>
@@ -273,7 +273,9 @@ const projectDetails = {
                 <p>-타겟이 존재할 경우 캐릭터가 자연스럽게 타겟을 바라보도록 회전 보정</p>
                 <p>-이동 속도에 따라 애니메이션 파라미터를 보간 처리하여 부드러운 전환 구현</p>
                 <br>
-                <p><strong> • 결과:</strong></p>
+                <span class="status-badge">
+                <p><strong>결과</strong></p>
+                </span>
                 <p>  - 이동, 공격, 상호작용이 충돌 없이 자연스럽게 이어지는 Top-Down 조작 시스템 완성</p>
                 <p>  - FSM 기반 구조로 AI 및 몬스터 이동 로직과의 구조적 일관성 확보</p>
                 <p>  - 상태 추가 및 확장이 용이한 캐릭터 제어 아키텍처 구축</p>
