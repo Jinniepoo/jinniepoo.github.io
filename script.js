@@ -221,18 +221,17 @@ const projectDetails = {
     <div class="modal-feature-section">
         <h3>1. 캐릭터 조작 및 이동 시스템</h3>
             <h4>FSM 기반 상태 제어와 NavMesh 연동을 통한 Top-Down 캐릭터 이동 시스템 구현</h4>
-                <p><strong>[문제 정의]</strong></p>
-                <p>    Top-Down 3D 시점에서 플레이어가 마우스 입력만으로 자연스럽게 이동 및 상호작용할 수 있는 조작 시스템이 필요했습니다.</p>
-                <p>    단순한 위치 이동을 넘어, 이동·정지·공격·상호작용 상태가 충돌하지 않고 유기적으로 전환되며, 애니메이션 및 시각적 피드백이 일관되게 유지되는 구조를 목표로 했습니다.</p>
-                
+                <p><strong>Top-Down 3D 시점</strong>에서 플레이어가 <strong>마우스 입력</strong>만으로 자연스럽게 <strong>이동 및 상호작용</strong>할 수 있는 <strong>조작 시스템</strong>이 필요했습니다.</p>
+                <p>단순한 위치 이동을 넘어, <strong>이동/정지/공격/상호작용 상태</strong>가 충돌하지 않고 <strong>유기적으로 전환</strong>되며, 애니메이션 및 시각적 피드백이 <strong>일관되게 유지</strong>되는 구조를 목표로 했습니다.</p>
+            <br>
+            <p><strong>[해결 방법]</strong></p>
+            <p>입력 처리, 이동 로직, 상태 전환 책임을 명확히 분리한 FSM 기반 캐릭터 제어 구조를 설계했습니다.</p>
             <div class="modal-feature-row">
                 <div class="text-content">
-                <p><strong>[해결 방법]</strong></p>
-                <p>입력 처리, 이동 로직, 상태 전환 책임을 명확히 분리한 FSM 기반 캐릭터 제어 구조를 설계했습니다.</p>
-                <p><strong>  - 입력 처리:</strong> Unity New Input System을 사용하여 입력 이벤트를 명확히 분리</p>
-                <p><strong>  - 이동 처리:</strong> NavMeshAgent를 기반으로 경로 탐색을 담당하게 하고, 실제 이동은 CharacterController를 통해 수동 제어</p>
-                <p><strong>  - 상태 처리:</strong> Idle / Move / Attack 상태를 FSM으로 관리하여 이동 중 공격, UI 상호작용 등 상태 충돌을 방지</p>
-                <p><strong>  - 피드백:</strong> 클릭 지점 및 타겟을 Reticle 오브젝트로 시각화하여 플레이어의 의도를 명확히 전달</p>
+                <p><strong>- 입력 처리:</strong> Unity New Input System을 사용하여 입력 이벤트를 명확히 분리</p>
+                <p><strong>- 이동 처리:</strong> NavMeshAgent를 기반으로 경로 탐색을 담당하게 하고, 실제 이동은 CharacterController를 통해 수동 제어</p>
+                <p><strong>- 상태 처리:</strong> Idle / Move / Attack 상태를 FSM으로 관리하여 이동 중 공격, UI 상호작용 등 상태 충돌을 방지</p>
+                <p><strong>- 피드백:</strong> 클릭 지점 및 타겟을 Reticle 오브젝트로 시각화하여 플레이어의 의도를 명확히 전달</p>
             </div>
             <img src="https://raw.githubusercontent.com/Jinniepoo/Unity6_Undervein3D/main/GitImages/ClickUI.gif" alt="탑다운 마우스 Raycast 기반 캐릭터 이동 GIF" />
             </div>
