@@ -215,7 +215,7 @@ const projectDetails = {
         links: [
             { text: "GitHub", url: "https://github.com/Jinniepoo/Unity6_Undervein3D", primary: false }
         ],
-        bannerImage: ["https://raw.githubusercontent.com/Jinniepoo/Unity6_Undervein3D/main/GitImages/Undervein.png"],
+        bannerImage: ["https://raw.githubusercontent.com/Jinniepoo/Unity6_Undervein3D/blob/main/GitImages/Undervein.png"],
         richContent: `<div class="modal-rich-details">
 
     <div class="modal-feature-section">
