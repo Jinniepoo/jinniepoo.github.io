@@ -330,56 +330,510 @@ const projectDetails = {
 
     
     <div class="modal-feature-section">
-        <h3>2. FSM (Finite State Machine) 및 AI 전투</h3>
-        <div class="modal-feature-row reverse">
-            <div class="text-content">
-                <h4>재사용 가능한 FSM 기반의 플레이어/몬스터 AI 및 전투 로직</h4>
-                <p><strong>[문제 정의]</strong> 플레이어와 몬스터가 대기/이동/공격/사망 등의 상태를 유기적으로 전환하며 복잡한 전투 및 순찰 행동을 수행해야 했습니다.</p>
-                <p><strong>[해결 방법]</strong> FSM 패턴을 핵심 구조로 채택하여 상태별 로직을 분리하고, NavMeshAgent를 활용하여 몬스터의 순찰/추적 경로를 구현했습니다.</p>
-                <p><strong>[해결 과정]</strong> IdleState, MoveState, AttackState, DeadState 등 상태 클래스를 정의하여 공통 로직을 관리했습니다. 몬스터는 Waypoint를 따라 순찰하다가, 시야 범위(Detection Range) 내에 플레이어가 감지되면 추적으로 전환합니다. 공격 거리에 도달하면 AttackState로 전환하여 거리 기반 공격을 수행하고 이펙트를 연동했습니다.</p>
+    <h3>2. FSM (Finite State Machine) 및 AI 전투</h3>
+    <h4>재사용 가능한 FSM 기반의 플레이어 / 몬스터 AI 및 전투 로직</h4>
+
+    <p>
+        플레이어와 몬스터가 <strong>대기 / 이동 / 공격 / 사망</strong> 상태를
+        상황에 따라 자연스럽게 전환하며,
+        <strong>전투 및 순찰 AI</strong>를 수행해야 했습니다.
+    </p>
+
+    <p>
+        단순 조건 분기가 아닌,
+        <strong>확장 가능한 구조</strong>로 상태를 관리하여
+        플레이어와 몬스터 양쪽에
+        <strong>재사용 가능한 전투 아키텍처</strong>를 구축하는 것이 목표였습니다.
+    </p>
+
+    <div class="tab-container">
+        <div class="tab-header">
+            <button class="tab-btn active" data-tab="solution2">해결 방법</button>
+            <button class="tab-btn" data-tab="detail2">구현 상세</button>
+        </div>
+
+        <!-- 해결 방법 -->
+        <div id="solution2" class="tab-content active">
+            <p>
+                <strong>FSM(Finite State Machine)</strong> 패턴을 핵심 구조로 채택하여,
+                상태별 책임을 명확히 분리하고
+                플레이어와 몬스터 모두에
+                <strong>공통으로 적용 가능한 전투 구조</strong>를 설계했습니다.
+            </p>
+
+            <div class="modal-feature-row reverse">
+                <div class="text-content">
+
+                    <p class="feature-line">
+                        <span class="feature-title">상태 분리</span>
+                        <span class="feature-desc">
+                            Idle / Move / Attack / Dead 상태를 각각 독립적인 State 클래스로 구현
+                        </span>
+                    </p>
+
+                    <p class="feature-line">
+                        <span class="feature-title">AI 이동</span>
+                        <span class="feature-desc">
+                            NavMeshAgent를 활용하여 몬스터의 순찰 및 추적 경로를 구성
+                        </span>
+                    </p>
+
+                    <p class="feature-line">
+                        <span class="feature-title">전투 전환</span>
+                        <span class="feature-desc">
+                            플레이어 감지 시 추적 상태로 전환하고,
+                            공격 거리 도달 시 AttackState로 자연스럽게 전환
+                        </span>
+                    </p>
+
+                    <p class="feature-line">
+                        <span class="feature-title">재사용성</span>
+                        <span class="feature-desc">
+                            플레이어 / 몬스터 모두 동일한 FSM 구조를 사용하여
+                            유지보수성과 확장성을 확보
+                        </span>
+                    </p>
+
+                </div>
+
+                <img src="https://raw.githubusercontent.com/Jinniepoo/Unity6_Undervein3D/main/GitImages/MonsterAtt.gif"
+                     alt="FSM 기반 몬스터 전투 GIF" />
             </div>
-            <img src="https://raw.githubusercontent.com/Jinniepoo/Unity6_Undervein3D/main/GitImages/MonsterAtt.gif" alt="FSM 기반 몬스터 공격 및 전투 GIF" />
+        </div>
+
+        <!-- 구현 상세 -->
+        <div id="detail2" class="tab-content scrollable">
+            <div class="modal-feature-row-reverse">
+                <div class="text-content">
+
+                    <p class="feature-line">
+                        <span class="feature-title">FSM 구조 설계</span>
+                        각 캐릭터는 FSM을 통해 상태를 관리하며,
+                        상태 전환 로직은 중앙에서 통제되도록 구성했습니다.
+                    </p>
+
+                    <p>- 모든 상태는 공통 State 인터페이스를 상속</p>
+                    <p>- Enter / Update / Exit 구조로 상태 책임 명확화</p>
+                    <p>- 상태 간 직접 참조를 제거하여 결합도 최소화</p>
+
+                    <br>
+
+                    <p class="feature-line">
+                        <span class="feature-title">몬스터 AI 흐름</span>
+                        몬스터는 Waypoint 기반 순찰 로직을 수행하다가,
+                        플레이어 감지 시 전투 상태로 전환됩니다.
+                    </p>
+
+                    <p>- Detection Range 내 플레이어 진입 시 추적 시작</p>
+                    <p>- 공격 거리 도달 시 AttackState 전환</p>
+                    <p>- 공격 이펙트 및 애니메이션 타이밍 연동</p>
+
+                    <br>
+
+                    <p class="feature-line">
+                        <span class="feature-title">전투 상태 처리</span>
+                        공격 상태에서는 이동 입력 및 다른 상태 전환을 제한하여
+                        전투 중 상태 충돌을 방지했습니다.
+                    </p>
+
+                    <p>- 공격 중 이동 차단</p>
+                    <p>- 공격 종료 시 거리 및 타겟 상태에 따라 다음 상태 결정</p>
+
+                    <br>
+
+                    <p class="feature-line">
+                        <span class="feature-title">결과</span>
+                        FSM 기반 구조를 통해
+                        플레이어와 몬스터의 전투 로직을
+                        일관된 방식으로 관리할 수 있었습니다.
+                    </p>
+
+                    <p>- 전투 흐름이 자연스럽고 예측 가능하게 동작</p>
+                    <p>- 상태 추가 및 AI 패턴 확장이 용이</p>
+                    <p>- 플레이어 / 몬스터 간 구조적 통일성 확보</p>
+
+                </div>
+            </div>
         </div>
     </div>
+</div>
+
 
     <div class="modal-feature-section">
-        <h3>3. 장비 교체 시스템 (Skinned Mesh)</h3>
-        <div class="modal-feature-row">
-            <div class="text-content">
-                <h4>Blender 커스텀 Skinned Mesh 제작 및 Armature 재활용을 통한 장비 장착 시스템</h4>
-                <p><strong>[문제 정의]</strong> 무료 에셋의 한계를 극복하고, 장비 교체 시 캐릭터 모델의 일부(예: 신발, 갑옷)가 애니메이션에 따라 변형되어야 하는 Skinned Mesh 형태로 자연스럽게 교체되는 시스템 구현이 필요했습니다.</p>
-                <p><strong>[해결 방법]</strong> Blender에서 장비 파츠를 직접 제작하고, Unity에서 기존 캐릭터의 Armature(Bone)를 재활용하여 부착하는 방식으로 문제를 해결했습니다.</p>
-                <p><strong>[해결 과정]</strong> Blender에서 신규 장비 모델을 제작 후, 기존 캐릭터 모델의 Armature 정보를 유지하며 장비를 바인딩했습니다. 게임 내에서 장비 장착 시, 해당 Skinned Mesh Prefab을 캐릭터 Armature의 적절한 위치에 인스턴스화(Instantiate)하여 교체를 구현했습니다. 또한 무기 Mesh 등은 Armature에 수작업으로 연결하여 동작 시 자연스러움을 확보했습니다.</p>
+    <h3>3. 장비 교체 시스템 (Skinned Mesh)</h3>
+    <h4>Blender 커스텀 Skinned Mesh 제작 및 Armature 재활용을 통한 장비 장착 시스템</h4>
+
+    <p>
+        무료 에셋의 한계를 넘어,
+        <strong>장비 교체 시에도 애니메이션과 자연스럽게 연동되는</strong>
+        Skinned Mesh 기반 장비 시스템이 필요했습니다.
+    </p>
+
+    <p>
+        단순 Mesh 교체가 아닌,
+        <strong>기존 캐릭터의 Bone 구조를 유지</strong>하면서
+        장비 파츠가 함께 변형되는 구조를 목표로 했습니다.
+    </p>
+
+    <div class="tab-container">
+        <div class="tab-header">
+            <button class="tab-btn active" data-tab="solution3">해결 방법</button>
+            <button class="tab-btn" data-tab="detail3">구현 상세</button>
+        </div>
+
+        <!-- 해결 방법 -->
+        <div id="solution3" class="tab-content active">
+            <p>
+                Blender에서 <strong>장비 전용 Skinned Mesh</strong>를 직접 제작하고,
+                Unity에서는 기존 캐릭터의
+                <strong>Armature(Bone)를 그대로 재활용</strong>하는 방식으로
+                장비 장착 시스템을 구현했습니다.
+            </p>
+
+            <div class="modal-feature-row">
+                <div class="text-content">
+
+                    <p class="feature-line">
+                        <span class="feature-title">Skinned Mesh</span>
+                        <span class="feature-desc">
+                            장비 파츠를 Skinned Mesh 형태로 제작하여 애니메이션 변형을 지원
+                        </span>
+                    </p>
+
+                    <p class="feature-line">
+                        <span class="feature-title">Armature 재사용</span>
+                        <span class="feature-desc">
+                            캐릭터 본 구조를 그대로 사용하여 장비 간 애니메이션 일관성 유지
+                        </span>
+                    </p>
+
+                    <p class="feature-line">
+                        <span class="feature-title">동적 교체</span>
+                        <span class="feature-desc">
+                            장비 장착 시 Skinned Mesh Prefab을 런타임에 교체
+                        </span>
+                    </p>
+
+                    <p class="feature-line">
+                        <span class="feature-title">확장성</span>
+                        <span class="feature-desc">
+                            동일 Armature 기준으로 다양한 장비 파츠 추가 가능
+                        </span>
+                    </p>
+
+                </div>
+
+                <img src="https://raw.githubusercontent.com/Jinniepoo/Unity6_Undervein3D/main/GitImages/EquipSkinned.gif"
+                     alt="Skinned Mesh 장비 교체 GIF" />
             </div>
-            <img src="https://raw.githubusercontent.com/Jinniepoo/Unity6_Undervein3D/main/GitImages/EquipSkinned.gif" alt="Skinned Mesh 장비 교체 GIF" />
+        </div>
+
+        <!-- 구현 상세 -->
+        <div id="detail3" class="tab-content scrollable">
+            <div class="modal-feature-row">
+                <div class="text-content">
+
+                    <p class="feature-line">
+                        <span class="feature-title">Blender 작업</span>
+                        장비 모델을 직접 제작한 후,
+                        기존 캐릭터의 Armature 정보를 유지한 상태로 바인딩했습니다.
+                    </p>
+
+                    <p>- 캐릭터와 동일한 Bone 구조 사용</p>
+                    <p>- Weight Paint를 조정하여 관절 변형 최소화</p>
+                    <p>- 장비별 Skinned Mesh Prefab 생성</p>
+
+                    <br>
+
+                    <p class="feature-line">
+                        <span class="feature-title">Unity 장착 구조</span>
+                        게임 내 장비 장착 시,
+                        Skinned Mesh Prefab을 캐릭터 Armature 하위에 인스턴스화했습니다.
+                    </p>
+
+                    <p>- 기존 장비 제거 후 신규 장비 장착</p>
+                    <p>- SkinnedMeshRenderer의 bones 배열 재연결</p>
+                    <p>- 애니메이션 클립 변경 없이 즉시 동작</p>
+
+                    <br>
+
+                    <p class="feature-line">
+                        <span class="feature-title">무기 Mesh 처리</span>
+                        무기와 같은 비변형 Mesh는
+                        Armature에 수작업으로 연결하여 동작을 맞췄습니다.
+                    </p>
+
+                    <p>- 손 Bone 기준으로 위치 및 회전 보정</p>
+                    <p>- 공격 애니메이션과 자연스럽게 연동</p>
+
+                    <br>
+
+                    <p class="feature-line">
+                        <span class="feature-title">결과</span>
+                        장비 교체 시에도
+                        애니메이션 품질이 유지되는 시스템을 완성했습니다.
+                    </p>
+
+                    <p>- 장비 교체 시 애니메이션 깨짐 없음</p>
+                    <p>- 신규 장비 추가 시 리깅 작업 최소화</p>
+                    <p>- 커스텀 장비 제작 파이프라인 확보</p>
+
+                </div>
+            </div>
         </div>
     </div>
+</div>
+
 
     <div class="modal-feature-section">
-        <h3>4. 인벤토리 및 아이템 관리</h3>
-        <div class="modal-feature-row reverse">
-            <div class="text-content">
-                <h4>Scriptable Object를 활용한 효율적인 아이템 데이터 관리 및 인벤토리 시스템</h4>
-                <p><strong>[문제 정의]</strong> 장비, 소비 아이템 등 다양한 종류의 아이템 데이터를 효율적으로 관리하고, 아이템의 습득 및 사용(소비) 로직을 명확하게 분리하여 구현해야 했습니다.</p>
-                <p><strong>[해결 방법]</strong> Scriptable Object를 사용하여 아이템 데이터를 에셋으로 관리하고, 충돌 기반의 자동 습득 로직 및 우클릭 소비 로직을 구현했습니다.</p>
-                <p><strong>[해결 과정]</strong> 장비 및 소비 아이템 데이터를 Scriptable Object로 정의하여 유니티 에디터에서 쉽게 관리했습니다. 바닥에 떨어진 아이템은 플레이어와 충돌 시 자동으로 인벤토리에 추가되며, Consumable Item은 인벤토리 UI에서 우클릭 사용 시 체력 회복 등 지정된 Stats을 즉시 증가시키는 로직을 적용했습니다. </p>
+    <h3>4. 인벤토리 및 아이템 관리</h3>
+    <h4>Scriptable Object를 활용한 효율적인 아이템 데이터 관리 및 인벤토리 시스템</h4>
+
+    <p>
+        장비 아이템과 소비 아이템 등
+        <strong>서로 다른 성격의 아이템을 일관된 구조로 관리</strong>하면서,
+        습득·사용 로직을 명확히 분리할 필요가 있었습니다.
+    </p>
+
+    <p>
+        데이터 수정 시 코드 변경을 최소화하고,
+        <strong>확장성과 유지보수성이 높은 인벤토리 구조</strong>를 목표로 설계했습니다.
+    </p>
+
+    <div class="tab-container">
+        <div class="tab-header">
+            <button class="tab-btn active" data-tab="solution4">해결 방법</button>
+            <button class="tab-btn" data-tab="detail4">구현 상세</button>
+        </div>
+
+        <!-- 해결 방법 -->
+        <div id="solution4" class="tab-content active">
+            <p>
+                아이템 정보를 <strong>Scriptable Object</strong>로 분리하여
+                데이터 중심 구조를 설계하고,
+                습득 및 소비 로직은 역할에 따라 명확히 분리했습니다.
+            </p>
+
+            <div class="modal-feature-row reverse">
+                <div class="text-content">
+
+                    <p class="feature-line">
+                        <span class="feature-title">아이템 데이터</span>
+                        <span class="feature-desc">
+                            Scriptable Object 기반으로 아이템 속성 관리
+                        </span>
+                    </p>
+
+                    <p class="feature-line">
+                        <span class="feature-title">자동 습득</span>
+                        <span class="feature-desc">
+                            플레이어와의 충돌 기반 아이템 자동 획득 처리
+                        </span>
+                    </p>
+
+                    <p class="feature-line">
+                        <span class="feature-title">소비 로직</span>
+                        <span class="feature-desc">
+                            인벤토리 UI 우클릭으로 즉시 사용 가능
+                        </span>
+                    </p>
+
+                    <p class="feature-line">
+                        <span class="feature-title">확장 구조</span>
+                        <span class="feature-desc">
+                            장비 / 소비 아이템 타입 분리로 기능 확장 용이
+                        </span>
+                    </p>
+
+                </div>
+
+                <img src="https://raw.githubusercontent.com/Jinniepoo/Unity6_Undervein3D/main/GitImages/LootItems.gif"
+                     alt="아이템 습득 및 소비 GIF" />
             </div>
-            <img src="https://raw.githubusercontent.com/Jinniepoo/Unity6_Undervein3D/main/GitImages/LootItems.gif" alt="아이템 습득 및 소비 GIF" />
+        </div>
+
+        <!-- 구현 상세 -->
+        <div id="detail4" class="tab-content scrollable">
+            <div class="modal-feature-row">
+                <div class="text-content">
+
+                    <p class="feature-line">
+                        <span class="feature-title">Scriptable Object 설계</span>
+                        아이템 공통 속성을 Scriptable Object로 정의하여
+                        에디터에서 직관적으로 관리할 수 있도록 구성했습니다.
+                    </p>
+
+                    <p>- 아이템 이름, 아이콘, 타입, 설명 등 공통 데이터 관리</p>
+                    <p>- 장비 / 소비 아이템 타입 분기 처리</p>
+
+                    <br>
+
+                    <p class="feature-line">
+                        <span class="feature-title">아이템 습득 처리</span>
+                        필드에 배치된 아이템과 플레이어 충돌 시
+                        자동으로 인벤토리에 추가되도록 구현했습니다.
+                    </p>
+
+                    <p>- Trigger 기반 충돌 감지</p>
+                    <p>- 중복 습득 방지 처리</p>
+                    <p>- 습득 즉시 UI 반영</p>
+
+                    <br>
+
+                    <p class="feature-line">
+                        <span class="feature-title">소비 아이템 사용</span>
+                        인벤토리 UI에서 우클릭 시
+                        즉시 아이템 효과가 적용되도록 구현했습니다.
+                    </p>
+
+                    <p>- 체력 회복 등 Stat 즉시 증가</p>
+                    <p>- 사용 후 수량 감소 처리</p>
+                    <p>- 수량 0 시 슬롯 비활성화</p>
+
+                    <br>
+
+                    <p class="feature-line">
+                        <span class="feature-title">결과</span>
+                        데이터 중심 구조로
+                        유지보수성과 확장성을 모두 확보했습니다.
+                    </p>
+
+                    <p>- 신규 아이템 추가 시 코드 수정 최소화</p>
+                    <p>- UI / 로직 / 데이터 역할 분리</p>
+                    <p>- 장비 및 소비 아이템 통합 관리 가능</p>
+
+                </div>
+            </div>
         </div>
     </div>
+</div>
+
     
-    <div class="modal-feature-section">
-        <h3>5. NPC 대화 시스템</h3>
-        <div class="modal-feature-row">
-            <div class="text-content">
-                <h4>플레이어 Targeting 및 거리 감지 기반의 자연스러운 NPC 상호작용 및 대화 연출</h4>
-                <p><strong>[문제 정의]</strong> NPC와 플레이어 간의 상호작용이 자연스럽게 시작되도록 타이밍을 제어하고, 대화 중에는 UI와 NPC 애니메이션이 연동되도록 구현해야 했습니다.</p>
-                <p><strong>[해결 방법:</strong> 마우스 Raycast를 활용한 NPC Targeting 기능과 거리 감지 로직을 결합하여 대화 시작 조건을 구현했습니다.</p>
-                <p><strong>[해결 과정]</strong> 특정 NPC를 우클릭으로 Targeting 후, 플레이어가 지정된 거리까지 이동하면 대화가 시작됩니다. 대화 시작 시 대화창 UI를 열고 애니메이션을 연동하여, 몰입감을 높이는 자연스러운 연출을 구현했습니다.</p>
+  <div class="modal-feature-section">
+    <h3>5. NPC 대화 시스템</h3>
+    <h4>플레이어 Targeting 및 거리 감지 기반의 자연스러운 NPC 상호작용 및 대화 연출</h4>
+
+    <p>
+        NPC와의 상호작용이 단순 버튼 입력이 아니라,
+        <strong>플레이어의 의도와 상황에 맞게 자연스럽게 시작</strong>되도록
+        대화 트리거 조건을 설계할 필요가 있었습니다.
+    </p>
+
+    <p>
+        특히 이동 중 대화가 시작되거나,
+        거리 조건을 무시한 상호작용으로 인한
+        <strong>몰입도 저하 문제</strong>를 해결하는 것이 목표였습니다.
+    </p>
+
+    <div class="tab-container">
+        <div class="tab-header">
+            <button class="tab-btn active" data-tab="solution5">해결 방법</button>
+            <button class="tab-btn" data-tab="detail5">구현 상세</button>
+        </div>
+
+        <!-- 해결 방법 -->
+        <div id="solution5" class="tab-content active">
+            <p>
+                마우스 <strong>Raycast 기반 Targeting</strong>과
+                <strong>플레이어–NPC 거리 감지</strong>를 결합하여
+                대화 시작 조건을 단계적으로 제어했습니다.
+            </p>
+
+            <div class="modal-feature-row">
+                <div class="text-content">
+
+                    <p class="feature-line">
+                        <span class="feature-title">NPC Targeting</span>
+                        <span class="feature-desc">
+                            마우스 우클릭 Raycast로 NPC를 명확히 지정
+                        </span>
+                    </p>
+
+                    <p class="feature-line">
+                        <span class="feature-title">거리 기반 이동</span>
+                        <span class="feature-desc">
+                            대화 가능 거리까지 자동 이동 처리
+                        </span>
+                    </p>
+
+                    <p class="feature-line">
+                        <span class="feature-title">대화 트리거</span>
+                        <span class="feature-desc">
+                            거리 조건 충족 시 대화 UI 활성화
+                        </span>
+                    </p>
+
+                    <p class="feature-line">
+                        <span class="feature-title">연출 연동</span>
+                        <span class="feature-desc">
+                            대화 중 NPC 애니메이션 및 UI 연동
+                        </span>
+                    </p>
+
+                </div>
+
+                <img src="https://raw.githubusercontent.com/Jinniepoo/Unity6_Undervein3D/main/GitImages/NPC.gif"
+                     alt="NPC 대화 시스템 GIF" />
             </div>
-            <img src="https://raw.githubusercontent.com/Jinniepoo/Unity6_Undervein3D/main/GitImages/NPC.gif" alt="NPC 대화 시스템 GIF" />
+        </div>
+
+        <!-- 구현 상세 -->
+        <div id="detail5" class="tab-content scrollable">
+            <div class="modal-feature-row">
+                <div class="text-content">
+
+                    <p class="feature-line">
+                        <span class="feature-title">Targeting 처리</span>
+                        마우스 우클릭 시 Raycast를 사용해
+                        NPC 여부를 판별하고, 유효한 타겟일 경우
+                        상호작용 대상으로 지정했습니다.
+                    </p>
+
+                    <p>- UI 위 클릭 여부 선처리</p>
+                    <p>- NPC Layer 기반 필터링</p>
+                    <p>- 중복 Targeting 방지</p>
+
+                    <br>
+
+                    <p class="feature-line">
+                        <span class="feature-title">이동 및 거리 판별</span>
+                        NPC가 Target으로 지정되면
+                        플레이어는 자동으로 대화 가능 거리까지 이동합니다.
+                    </p>
+
+                    <p>- NavMeshAgent 기반 자동 이동</p>
+                    <p>- 지정 거리 도달 여부 실시간 체크</p>
+
+                    <br>
+
+                    <p class="feature-line">
+                        <span class="feature-title">대화 시작 로직</span>
+                        거리 조건이 충족되면
+                        이동 상태를 종료하고 대화 상태로 전환합니다.
+                    </p>
+
+                    <p>- 플레이어 입력 잠금</p>
+                    <p>- 대화 UI 활성화</p>
+                    <p>- NPC 대화 애니메이션 트리거</p>
+
+                    <br>
+
+                    <p class="feature-line">
+                        <span class="feature-title">결과</span>
+                        상황에 맞는 상호작용 흐름으로
+                        자연스러운 NPC 대화 시스템을 완성했습니다.
+                    </p>
+
+                    <p>- 이동 → 정지 → 대화 흐름의 자연스러운 연결</p>
+                    <p>- 의도하지 않은 대화 트리거 방지</p>
+                    <p>- 상호작용 몰입도 향상</p>
+
+                </div>
+            </div>
         </div>
     </div>
+</div>
+
     
 </div>`
     },
