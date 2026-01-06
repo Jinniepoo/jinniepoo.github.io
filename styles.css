@@ -533,19 +533,28 @@ section:nth-child(even) {
 }
 
 .feature-line {
-    margin: 6px 0;
+    display: flex;
+    align-items: center; 
+    gap: 12px;                 
+    line-height: 1.5;
+}
+
+.feature-desc {
+    flex: 1;            
 }
 
 .feature-title {
     padding: 0.5rem 1.0rem;
     border-radius: 15px;
+    flex-shrink: 0;            
+    min-width: 90px;         
     font-size: 0.9rem;
     font-weight: 500;
     display: inline-block;
     margin-bottom: 5px;
     background-color: transparent;
-    border: 1.5px solid var(--accent-color);
-    color: var(--accent-color);
+    border: 2.5px solid rgb(82, 82, 82);
+    color: white;
 }
 
 .modal-feature-row-badge{
@@ -554,14 +563,13 @@ section:nth-child(even) {
     font-size: 1.0rem;
     font-weight: 500;
     display: inline-block;
-    margin-bottom: 12px;
     background-color: var(--accent-color);
     color: #1a1a1a;
 }
 .modal-feature-row { 
     display: flex; 
     align-items: center; 
-    gap: 30px; 
+    gap: 10px; 
     margin-bottom: 30px; 
 }
 .modal-feature-row img { 
@@ -572,8 +580,8 @@ section:nth-child(even) {
 }
 .modal-feature-row .text-content { 
     flex: 1; 
-    line-height: 1; 
-    font-size: 1.05rem;
+    line-height: 0.85; 
+    font-size: 1rem;
 }
 .modal-feature-row.reverse { 
     flex-direction: row-reverse; 
@@ -588,6 +596,50 @@ section:nth-child(even) {
     gap: 20px; 
 }
 
+.tab-container{
+    margin-top: 16px;
+}
+
+.tab-header {
+    display: flex;
+    border-bottom: 1px solid #333;
+}
+
+.tab-btn {
+    padding: 10px 16px;
+    background: none;
+    border: none;
+    color: #aaa;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+}
+
+.tab-btn.active {
+    color: #fff;
+    border-bottom: 2px solid var(--accent-color);
+    font-weight: 600;
+}
+
+.tab-body {
+    margin-top: 12px;
+    height: 260px;           
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    margin: 10px;
+    display: block;
+}
+
+.tab-content.scrollable {
+    max-height: 420px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
 .project-left-column {
     display: flex;
     flex-direction: column;
