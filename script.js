@@ -224,8 +224,10 @@ const projectDetails = {
                 <p><strong>Top-Down 3D 시점</strong>에서 플레이어가 <strong>마우스 입력</strong>만으로 자연스럽게 <strong>이동 및 상호작용</strong>할 수 있는 <strong>조작 시스템</strong>이 필요했습니다.</p>
                 <p>단순한 위치 이동을 넘어, <strong>이동/정지/공격/상호작용 상태</strong>가 충돌하지 않고 <strong>유기적으로 전환</strong>되며, 애니메이션 및 시각적 피드백이 <strong>일관되게 유지</strong>되는 구조를 목표로 했습니다.</p>
             <br>
+            <div class="project-status">
             <div class="status-badge">
             <p><strong>해결 방법</strong></p>
+            </div>
             </div>
             <p>입력 처리, 이동 로직, 상태 전환 책임을 명확히 분리한 FSM 기반 캐릭터 제어 구조를 설계했습니다.</p>
             <div class="modal-feature-row">
