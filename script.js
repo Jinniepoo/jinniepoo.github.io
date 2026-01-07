@@ -107,18 +107,15 @@ const projectDetails = {
         <div class="modal-feature-section">
     <h3>1. 캐릭터 핵심 조작 및 전투 로직</h3>
     <h4>
-        3D 플랫포머 환경에서의 정교한 캐릭터 조작과
-        포물선 기반 넉백 전투 시스템 구현
+        3D 플랫포머 환경에서의 정교한 캐릭터 조작과 포물선 기반 넉백 전투 시스템 구현
     </h4>
 
     <p>
-        New Super Lucky’s Tale 모작 프로젝트에서 캐릭터 조작과 전투는
-        <strong>게임 플레이 감각을 좌우하는 핵심 요소</strong>였습니다.
+        New Super Lucky’s Tale 모작 프로젝트에서 캐릭터 조작과 전투는 <strong>게임 플레이 감각을 좌우하는 핵심 요소</strong>였습니다.
     </p>
 
     <p>
-        이동, 점프, 공격이 자연스럽게 연결되고, 전투 시에는 <strong>명확한 피드백과 물리적 타격감</strong>을
-        제공하는 것을 목표로 설계했습니다.
+        이동/점프/공격이 자연스럽게 연결되고, 전투 시에는 <strong>명확한 피드백과 물리적 타격감</strong>을 제공하는 것을 목표로 설계했습니다.
     </p>
 
     <div class="tab-container">
@@ -180,9 +177,7 @@ const projectDetails = {
 
                     <p class="feature-line">
                         <span class="feature-title">캐릭터 핵심 조작</span>
-                        이동, 점프, 공격을
-                        하나의 조작 흐름으로 연결하여
-                        3D 플랫포머 특유의 조작 감각을 구현했습니다.
+                        이동, 점프, 공격을 하나의 조작 흐름으로 연결하여 3D 플랫포머 특유의 조작 감각을 구현했습니다.
                     </p>
 
                     <p>- 방향 입력 기반 이동 처리</p>
@@ -806,7 +801,7 @@ const projectDetails = {
                     </p>
 
                     <p>- 1회 활성화 상태 관리</p>
-                    <p>- 리스폰 위치 갱신</p>
+                    <p>- Respawn 위치 갱신</p>
 
                     <br>
 
@@ -829,7 +824,7 @@ const projectDetails = {
                         환경 변화가 체감되도록 설계했습니다.
                     </p>
 
-                    <p>- 트리거 기반 연출 제어</p>
+                    <p>- Trigger 기반 연출 제어</p>
                     <p>- 환경 오브젝트 동적 변화</p>
 
                     <br>
@@ -855,11 +850,11 @@ const projectDetails = {
              <div class="modal-feature-section">
     <h3>6. Monster AI 및 렌더링 최적화</h3>
     <h4>
-        상태 머신 기반 몬스터 AI 구현 및Instancing / Frustum Culling을 통한 렌더링 최적화
+        상태 머신 기반 몬스터 AI 구현 및 Instancing / Frustum Culling을 통한 렌더링 최적화
     </h4>
 
     <p>
-        다수의 몬스터가 동시에 등장하는 환경에서, 플레이어를 인식하고 추적·공격하는
+        다수의 몬스터가 동시에 등장하는 환경에서, 플레이어를 인식하고 추적/공격하는
         <strong>기본 AI 동작</strong>이 필요했습니다.
     </p>
 
@@ -1011,6 +1006,8 @@ const projectDetails = {
             { text: "YouTube", url: "https://www.youtube.com/watch?v=lGg6B_-HBl8", primary: true }
         ],
         bannerImage: ["https://img.youtube.com/vi/lGg6B_-HBl8/maxresdefault.jpg"],
+
+        
     },
 /* UNDERVEIN */
   'Undervein': {
